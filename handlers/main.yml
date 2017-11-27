@@ -13,7 +13,7 @@
     state: stopped
     host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
   notify: wait for the server to become available
-  
+
 - name: wait for the server to become available
   wait_for:
     port: "{{ ansible_port }}"

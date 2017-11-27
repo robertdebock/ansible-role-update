@@ -9,16 +9,21 @@
     - ansible_virtualization_type != "docker"
     - ansible_distribution == "CentOS"
     - ansible_distribution_major_version == 6
+  tags:
+    - skip_ansible_lint
 
-  - name: update all software (CentOS-7)
-    dnf:
-      name: "*"
-      state: latest
-    notify: reboot
-    when:
-      - ansible_virtualization_type != "docker"
-      - ansible_distribution == "CentOS"
-      - ansible_distribution_major_version == 7
+
+- name: update all software (CentOS-7)
+  dnf:
+    name: "*"
+    state: latest
+  notify: reboot
+  when:
+    - ansible_virtualization_type != "docker"
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version == 7
+  tags:
+    - skip_ansible_lint
 
 - name: update all software (Fedora)
   dnf:
@@ -28,24 +33,29 @@
   when:
     - ansible_virtualization_type != "docker"
     - ansible_distribution == "Fedora"
+  tags:
+    - skip_ansible_lint
 
-  - name: update all software (openSUSE)
-    yum:
-      name: "*"
-      state: latest
-    notify: reboot
-    when:
-      - ansible_virtualization_type != "docker"
-      - ansible_distribution == "openSUSE Leap"
+- name: update all software (openSUSE)
+  yum:
+    name: "*"
+    state: latest
+  notify: reboot
+  when:
+    - ansible_virtualization_type != "docker"
+    - ansible_distribution == "openSUSE Leap"
+  tags:
+    - skip_ansible_lint
 
-  - name: update all software (Debian/Ubuntu)
-    apk:
-      update_cache: yes
-      upgrade: yes
-    notify: reboot
-    when:
-      - ansible_virtualization_type != "docker"
-      - ansible_distribution in [ "Debian", "Ubuntu" ]
+
+- name: update all software (Debian/Ubuntu)
+  apk:
+    update_cache: yes
+    upgrade: yes
+  notify: reboot
+  when:
+    - ansible_virtualization_type != "docker"
+    - ansible_distribution in [ "Debian", "Ubuntu" ]
 
 - name: flush handlers
   meta: flush_handlers
