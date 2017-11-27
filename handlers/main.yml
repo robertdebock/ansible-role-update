@@ -1,0 +1,21 @@
+---
+# handlers file for ansible-role-update
+- name: reboot
+  shell: (sleep 3 &&  reboot &)
+  async: 0
+  poll: 0
+  ignore_errors: yes
+  notify: wait for the server to become unavailable
+
+- name: wait for the server to become unavailable
+  wait_for:
+    port: "{{ ansible_port }}"
+    state: stopped
+    host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
+  notify: wait for the server to become available
+  
+- name: wait for the server to become available
+  wait_for:
+    port: "{{ ansible_port }}"
+    state: started
+    host: "{{ ansible_ssh_host | default(inventory_hostname) }}"

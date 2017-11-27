@@ -1,0 +1,12 @@
+---
+# tasks file for ansible-role-template
+- name: update all software
+  package:
+    name: *
+    state: latest
+  notify: reboot
+  when:
+    - ansible_virtualization_type != "docker"
+
+- name: flush handlers
+  meta: flush_handlers

@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+
+  roles:
+    - role: ansible-role-update
+
+  tasks:
+    - name: test connection
+      ping:
