@@ -47,9 +47,8 @@
   tags:
     - skip_ansible_lint
 
-
 - name: update all software (Debian/Ubuntu)
-  apk:
+  apt:
     update_cache: yes
     upgrade: yes
   notify: reboot
