@@ -5,24 +5,21 @@
   async: 1
   poll: 0
   ignore_errors: yes
-  notify:
-    - wait for the server to become unavailable
-    - wait for the server to become available
+  notify: wait for the machine to be up
   when:
     - ansible_virtualization_type != "docker"
 
-- name: wait for the server to become unavailable
+- name: wait for the machine to be down
   become: no
   delegate_to: localhost
   wait_for:
+    host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
     port: "{{ ansible_port }}"
     state: stopped
-    host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
+  notify: wait for the machine to be up
 
-- name: wait for the server to become available
+- name: wait for the machine to be up
   become: no
   delegate_to: localhost
-  wait_for:
-    port: "{{ ansible_port }}"
-    state: started
-    host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
+  wait_for_connection:
+    delay: 32
