@@ -6,6 +6,8 @@
   poll: 0
   ignore_errors: yes
   notify: wait for the server to become unavailable
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: wait for the server to become unavailable
   wait_for:
