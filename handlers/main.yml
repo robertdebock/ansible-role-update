@@ -1,8 +1,8 @@
 ---
 # handlers file for ansible-role-update
 - name: reboot
-  shell: (sleep 3 &&  reboot &)
-  async: 0
+  shell: (sleep 3 && shutdown -r now "ansible-role-update" &)
+  async: 1
   poll: 0
   ignore_errors: yes
   notify: wait for the server to become unavailable
@@ -10,6 +10,8 @@
     - ansible_virtualization_type != "docker"
 
 - name: wait for the server to become unavailable
+  become: no
+  delegate_to: localhost
   wait_for:
     port: "{{ ansible_port }}"
     state: stopped
@@ -17,6 +19,8 @@
   notify: wait for the server to become available
 
 - name: wait for the server to become available
+  become: no
+  delegate_to: localhost
   wait_for:
     port: "{{ ansible_port }}"
     state: started
