@@ -33,7 +33,7 @@
 - name: update all software (Debian/Ubuntu)
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: dist
   notify: reboot
   when:
     - ansible_distribution in [ "Debian", "Ubuntu" ]
