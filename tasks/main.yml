@@ -37,7 +37,7 @@
     - skip_ansible_lint
 
 - name: update all software (openSUSE)
-  yum:
+  zypper:
     name: "*"
     state: latest
   notify: reboot
