@@ -4,7 +4,6 @@ language: python
 services: docker
 
 env:
-  - ansible_version: 2.2.0
   - ansible_version: 2.3.0
   - ansible_version: 2.4.0
 
