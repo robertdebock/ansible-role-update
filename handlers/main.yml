@@ -5,7 +5,9 @@
   async: 1
   poll: 0
   ignore_errors: yes
-  notify: wait for the server to become unavailable
+  notify:
+    - wait for the server to become unavailable
+    - wait for the server to become available
   when:
     - ansible_virtualization_type != "docker"
 
@@ -16,7 +18,6 @@
     port: "{{ ansible_port }}"
     state: stopped
     host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
-  notify: wait for the server to become available
 
 - name: wait for the server to become available
   become: no
