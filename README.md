@@ -32,10 +32,10 @@ Example Playbook
 - hosts: servers
 
   roles:
-    - ansible-role-update
+    - robertdebock.ansible-role-update
 ```
 
-Install this role using `galaxy install robertdebock.ansible-role-NAME`.
+Install this role using `galaxy install robertdebock.ansible-role-update`.
 
 
 License
