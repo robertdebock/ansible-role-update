@@ -1,7 +1,7 @@
 update
 =========
 
-[![Build Status](https://travis-ci.org/robertdebock.ansible-role-update.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-update)
+[![Build Status](https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-update)
 
 Provides updates for your system.
 
