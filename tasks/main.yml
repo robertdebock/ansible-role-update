@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-role-template
+# tasks file for template
 - name: update all software (CentOS)
   yum:
     name: "*"

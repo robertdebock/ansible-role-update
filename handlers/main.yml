@@ -1,7 +1,7 @@
 ---
-# handlers file for ansible-role-update
+# handlers file for update
 - name: reboot
-  shell: (sleep 3 && shutdown -r now "ansible-role-update" &)
+  shell: (sleep 3 && shutdown -r now "update" &)
   async: 1
   poll: 0
   ignore_errors: yes

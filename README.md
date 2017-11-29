@@ -1,7 +1,7 @@
-ansible-role-update
+update
 =========
 
-[![Build Status](https://travis-ci.org/robertdebock/ansible-role-NAME.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-NAME)
+[![Build Status](https://travis-ci.org/robertdebock.ansible-role-update.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-update)
 
 Provides updates for your system.
 
@@ -18,7 +18,7 @@ None known.
 Dependencies
 ------------
 
-- robertdebock.ansible-role-bootstrap
+- robertdebock.bootstrap
 
 Download the dependencies by issuing this command:
 ```
@@ -32,10 +32,10 @@ Example Playbook
 - hosts: servers
 
   roles:
-    - robertdebock.ansible-role-update
+    - robertdebock.update
 ```
 
-Install this role using `galaxy install robertdebock.ansible-role-update`.
+Install this role using `galaxy install robertdebock.update`.
 
 
 License
