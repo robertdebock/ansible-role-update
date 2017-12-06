@@ -22,4 +22,4 @@
   become: no
   delegate_to: localhost
   wait_for_connection:
-    delay: "{{ up_delay }}"
+    delay: "{{ update_delay }}"

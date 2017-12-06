@@ -1,3 +1,3 @@
 ---
 # defaults file for update
-up_delay: 32
+update_delay: 32
