@@ -5,7 +5,7 @@
   gather_facts: no
 
   roles:
-    - role: ansible-role-update
+    - role: robertdebock.update
 
   tasks:
     - name: test connection
