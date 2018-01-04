@@ -23,3 +23,8 @@
   delegate_to: localhost
   wait_for_connection:
     delay: "{{ update_delay }}"
+  notify: wait a little longer
+
+- name: wait a little longer
+  pause:
+    seconds: 10
