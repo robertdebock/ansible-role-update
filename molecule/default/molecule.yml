@@ -8,25 +8,25 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: centos-6
+  - name: update-centos-6
     image: centos:6
-  - name: centos-7
+  - name: update-centos-7
     image: centos:7
-  - name: debian-jessie
+  - name: update-debian-jessie
     image: debian:jessie
-  - name: debian-buster
+  - name: update-debian-buster
     image: debian:buster
-  - name: fedora-26
+  - name: update-fedora-26
     image: fedora:26
-  - name: fedora-27
+  - name: update-fedora-27
     image: fedora:27
-  - name: opensuse-42.2
+  - name: update-opensuse-42.2
     image: opensuse:42.2
-  - name: opensuse-42.3
+  - name: update-opensuse-42.3
     image: opensuse:42.3
-  - name: ubuntu-zesty
+  - name: update-ubuntu-zesty
     image: ubuntu:zesty
-  - name: ubuntu-artful
+  - name: update-ubuntu-artful
     image: ubuntu:artful
 provisioner:
   name: ansible
