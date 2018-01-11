@@ -4,7 +4,10 @@
   yum:
     name: "*"
     state: latest
-  notify: reboot
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_distribution == "CentOS"
   tags:
@@ -14,7 +17,10 @@
   dnf:
     name: "*"
     state: latest
-  notify: reboot
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_distribution == "Fedora"
   tags:
@@ -24,7 +30,10 @@
   zypper:
     name: "*"
     state: latest
-  notify: reboot
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_distribution == "openSUSE Leap"
   tags:
@@ -34,7 +43,10 @@
   apt:
     update_cache: yes
     upgrade: dist
-  notify: reboot
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_distribution in [ "Debian", "Ubuntu" ]
 
