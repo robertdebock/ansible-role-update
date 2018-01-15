@@ -6,10 +6,8 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
-    - ansible_distribution == "CentOS"
+    - ansible_pkg_mgr == "yum"
   tags:
     - skip_ansible_lint
 
@@ -19,10 +17,8 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
-    - ansible_distribution == "Fedora"
+    - ansible_pkg_mgr == "dnf"
   tags:
     - skip_ansible_lint
 
@@ -32,10 +28,8 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
-    - ansible_distribution == "openSUSE Leap"
+    - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
 
@@ -45,10 +39,8 @@
     upgrade: dist
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
-    - ansible_distribution in [ "Debian", "Ubuntu" ]
+    - ansible_pkg_mgr == "apt"
 
 - name: flush handlers
   meta: flush_handlers
