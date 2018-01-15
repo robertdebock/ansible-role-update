@@ -6,6 +6,9 @@
     state: latest
   notify:
     - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
+
   when:
     - ansible_pkg_mgr == "yum"
   tags:
@@ -17,6 +20,8 @@
     state: latest
   notify:
     - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
@@ -28,6 +33,8 @@
     state: latest
   notify:
     - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "zypper"
   tags:
@@ -39,6 +46,8 @@
     upgrade: dist
   notify:
     - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apt"
 
