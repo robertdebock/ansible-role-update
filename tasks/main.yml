@@ -1,5 +1,5 @@
 ---
-# tasks file for template
+# tasks file for update
 - name: update all software (CentOS)
   yum:
     name: "*"

@@ -1,7 +1,7 @@
 ---
 # handlers file for update
 - name: reboot
-  shell: (sleep 30 && shutdown -r now "ansible-role-update" &)
+  shell: (sleep "{{ update_reboot_delay }}" && shutdown -r now "ansible-role-update" &)
   async: 1
   poll: 0
   ignore_errors: yes
@@ -13,7 +13,8 @@
   wait_for_connection:
   register: connection
   until: connection | failed
-  retries: 10
+  retries: "{{ update_down_retries }}"
+  delay: "{{ update_down_delay }}"
   failed_when:
     - connection | success
   when:
