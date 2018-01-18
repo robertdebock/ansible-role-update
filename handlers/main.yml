@@ -11,12 +11,14 @@
 
 - name: wait for the machine to be down
   wait_for_connection:
+    connect_timeout: "{{ update_down_connect_timeout }}"
+    sleep: "{{ update_down_sleep }}"
+    timeout: "{{ update_down_timeout }}"
   register: connection
   until: connection | failed
-  retries: "{{ update_down_retries }}"
-  delay: "{{ update_down_delay }}"
   failed_when:
     - connection | success
+  retries: "{{ update_down_retries }}"
   when:
     - ansible_virtualization_type != "docker"
 
