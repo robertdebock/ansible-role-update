@@ -8,12 +8,11 @@
     - reboot
     - wait for the machine to be down
     - wait for the machine to be up
-  register: ansibleroleupdate
-
   when:
     - ansible_pkg_mgr == "yum"
   tags:
     - skip_ansible_lint
+  register: ansibleroleupdate
 
 - name: update all software (Fedora)
   dnf:
