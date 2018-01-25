@@ -3,7 +3,6 @@
   hosts: all
   become: yes
   gather_facts: no
-  serial: 1
 
   roles:
     - role: ansible-role-update
