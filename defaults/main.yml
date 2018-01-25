@@ -1,11 +1,16 @@
 ---
 # defaults file for update
+# How long to wait before sending a reboot.
+update_reboot_delay: 5
 
-# How long to wait before sending the reboot signal.
-update_reboot_delay: 16
-
-# How many times to retry before machine is down.
+# How many times should we try to connect.
 update_down_retries: 180
 
-# How long to wait between the retries before machine is down.
-update_down_delay: 1
+# Maximum number of seconds to wait for a connection to happen before closing and retrying.
+update_down_connect_timeout: 1
+
+# Maximum number of seconds to wait for.
+update_down_timeout: 1
+
+# Number of seconds to sleep between checks.
+update_down_sleep: 1

@@ -8,12 +8,20 @@ driver:
 lint:
   name: yamllint
 platforms:
+  - name: update-archlinux
+    image: base/archlinux
+  - name: update-alpine-3.6
+    image: alpine:3.6
+  - name: update-alpine-3.7
+    image: alpine:3.7
   - name: update-centos-6
     image: centos:6
   - name: update-centos-7
     image: centos:7
   - name: update-debian-jessie
     image: debian:jessie
+  - name: update-debian-stretch
+    image: debian:stretch
   - name: update-debian-buster
     image: debian:buster
   - name: update-fedora-26
@@ -24,8 +32,13 @@ platforms:
     image: opensuse:42.2
   - name: update-opensuse-42.3
     image: opensuse:42.3
-  - name: update-ubuntu-zesty
-    image: ubuntu:zesty
+    # 14.04 LTS
+  - name: update-ubuntu-trusty
+    image: ubuntu:trusty
+    # 16.04 LTS
+  - name: update-ubuntu-xenial
+    image: ubuntu:xenial
+    # 17.04
   - name: update-ubuntu-artful
     image: ubuntu:artful
 provisioner:
@@ -34,6 +47,19 @@ provisioner:
     name: ansible-lint
 scenario:
   name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - check
+    - side_effect
+    - verify
+    - destroy
 verifier:
   name: goss
   lint:
