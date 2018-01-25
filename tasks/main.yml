@@ -8,6 +8,7 @@
     - reboot
     - wait for the machine to be down
     - wait for the machine to be up
+  register: ansibleroleupdate
 
   when:
     - ansible_pkg_mgr == "yum"
@@ -26,6 +27,7 @@
     - ansible_pkg_mgr == "dnf"
   tags:
     - skip_ansible_lint
+  register: ansibleroleupdate
 
 - name: update all software (openSUSE)
   zypper:
@@ -39,6 +41,7 @@
     - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
+  register: ansibleroleupdate
 
 - name: update all software (Debian/Ubuntu)
   apt:
@@ -50,6 +53,7 @@
     - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apt"
+  register: ansibleroleupdate
 
 - name: flush handlers
   meta: flush_handlers
