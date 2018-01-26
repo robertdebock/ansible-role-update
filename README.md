@@ -13,7 +13,7 @@ Access to a repository containing packages, likely on the internet.
 Role Variables
 --------------
 
-None known.
+- update_autoremove: Clean unused packages? (For APT distributions only)
 
 Dependencies
 ------------

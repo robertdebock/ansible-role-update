@@ -46,6 +46,7 @@
   apt:
     update_cache: yes
     upgrade: dist
+    autoremove: "{{ update_autoremove }}"
   notify:
     - reboot
     - wait for the machine to be down
