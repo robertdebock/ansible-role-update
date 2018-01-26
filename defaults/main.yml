@@ -14,3 +14,6 @@ update_down_timeout: 1
 
 # Number of seconds to sleep between checks.
 update_down_sleep: 1
+
+# For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
+update_autoremove: no
