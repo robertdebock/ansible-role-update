@@ -13,7 +13,7 @@ Access to a repository containing packages, likely on the internet.
 Role Variables
 --------------
 
-None known.
+- update_autoremove: Clean unused packages? (For APT distributions only)
 
 Dependencies
 ------------
@@ -28,6 +28,7 @@ ansible-galaxy install --role-file requirements.yml
 Example Playbook
 ----------------
 
+The simplest way possible:
 ```
 - hosts: servers
 
@@ -35,8 +36,26 @@ Example Playbook
     - robertdebock.update
 ```
 
-Install this role using `galaxy install robertdebock.update`.
+The role sets a variable so it's possible to understand if changes were made:
+- ansibleroleupdate
 
+Here is an example of how to use that variable:
+```
+- hosts: servers
+
+  roles:
+    - robertdebock.update
+
+  tasks:
+    - name: send email
+      mail:
+        to: sysadmin@example.com
+        subject: "server {{ ansible_hostsname }} updated"
+      when:
+        - ansibleroleupdate.changed
+```
+
+Install this role using `galaxy install robertdebock.update`.
 
 License
 -------
