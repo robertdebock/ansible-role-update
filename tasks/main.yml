@@ -62,7 +62,5 @@
     - ansible_pkg_mgr == "apt"
     - update_autoremove == "yes"
 
-  register: ansibleroleupdate
-
 - name: flush handlers
   meta: flush_handlers
