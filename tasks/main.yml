@@ -1,6 +1,6 @@
 ---
 # tasks file for update
-- name: update all software (CentOS)
+- name: update all software (yum)
   yum:
     name: "*"
     state: latest
@@ -14,7 +14,7 @@
     - skip_ansible_lint
   register: ansibleroleupdate
 
-- name: update all software (Fedora)
+- name: update all software (dnf)
   dnf:
     name: "*"
     state: latest
@@ -28,7 +28,7 @@
     - skip_ansible_lint
   register: ansibleroleupdate
 
-- name: update all software (openSUSE)
+- name: update all software (zypper)
   zypper:
     name: "*"
     state: latest
@@ -42,7 +42,7 @@
     - skip_ansible_lint
   register: ansibleroleupdate
 
-- name: update all software (Debian/Ubuntu)
+- name: update all software (apt)
   apt:
     update_cache: yes
     upgrade: dist
@@ -54,7 +54,7 @@
     - ansible_pkg_mgr == "apt"
   register: ansibleroleupdate
 
-- name: apt autoremove (Debian/Ubuntu)
+- name: apt autoremove (apt)
   apt:
     autoremove: "{{ update_autoremove }}"
   when:
