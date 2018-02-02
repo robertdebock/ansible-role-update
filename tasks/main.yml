@@ -1,5 +1,12 @@
 ---
 # tasks file for update
+- name: update cache (apk)
+  apk:
+    update_cache: yes
+  when:
+    - ansible_pkg_mgr == "apk"
+  changed_when: false
+
 - name: update all software (apk)
   apk:
     upgrade: yes
