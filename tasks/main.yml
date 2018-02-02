@@ -54,7 +54,6 @@
     - ansible_pkg_mgr == "apt"
   register: ansibleroleupdate
 
-
 - name: apt autoremove (Debian/Ubuntu)
   apt:
     autoremove: "{{ update_autoremove }}"
