@@ -45,6 +45,20 @@
     - skip_ansible_lint
   register: ansibleroleupdate
 
+- name: update all software (pacman)
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
+  when:
+    - ansible_pkg_mgr == "pacman"
+  tags:
+    - skip_ansible_lint
+  register: ansibleroleupdate
+
 - name: update all software (yum)
   yum:
     name: "*"
