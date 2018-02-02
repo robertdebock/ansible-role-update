@@ -10,7 +10,7 @@
     - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apk"
-  register: ansibleroleupdate
+  register: update_result
 
 - name: update all software (apt)
   apt:
@@ -22,7 +22,7 @@
     - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apt"
-  register: ansibleroleupdate
+  register: update_result
 
 - name: apt autoremove (apt)
   apt:
@@ -43,7 +43,7 @@
     - ansible_pkg_mgr == "dnf"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
+  register: update_result
 
 - name: update all software (pacman)
   pacman:
@@ -57,7 +57,7 @@
     - ansible_pkg_mgr == "pacman"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
+  register: update_result
 
 - name: update all software (yum)
   yum:
@@ -71,7 +71,7 @@
     - ansible_pkg_mgr == "yum"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
+  register: update_result
 
 - name: update all software (zypper)
   zypper:
@@ -85,7 +85,7 @@
     - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
+  register: update_result
 
 - name: flush handlers
   meta: flush_handlers
