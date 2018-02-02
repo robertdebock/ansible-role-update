@@ -3,7 +3,6 @@
 - name: update all software (apk)
   apk:
     upgrade: yes
-    update_cache: yes
   notify:
     - reboot
     - wait for the machine to be down
