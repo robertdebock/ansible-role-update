@@ -1,20 +1,43 @@
 ---
 # tasks file for update
-- name: update all software (CentOS)
-  yum:
-    name: "*"
-    state: latest
+- name: update cache (apk)
+  apk:
+    update_cache: yes
+  when:
+    - ansible_pkg_mgr == "apk"
+  changed_when: false
+
+- name: update all software (apk)
+  apk:
+    upgrade: yes
   notify:
     - reboot
     - wait for the machine to be down
     - wait for the machine to be up
   when:
-    - ansible_pkg_mgr == "yum"
-  tags:
-    - skip_ansible_lint
-  register: ansibleroleupdate
+    - ansible_pkg_mgr == "apk"
+  register: update_result
 
-- name: update all software (Fedora)
+- name: update all software (apt)
+  apt:
+    update_cache: yes
+    upgrade: dist
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
+  when:
+    - ansible_pkg_mgr == "apt"
+  register: update_result
+
+- name: apt autoremove (apt)
+  apt:
+    autoremove: "{{ update_autoremove }}"
+  when:
+    - ansible_pkg_mgr == "apt"
+    - update_autoremove == "yes"
+
+- name: update all software (dnf)
   dnf:
     name: "*"
     state: latest
@@ -26,9 +49,37 @@
     - ansible_pkg_mgr == "dnf"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
+  register: update_result
 
-- name: update all software (openSUSE)
+- name: update all software (pacman)
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
+  when:
+    - ansible_pkg_mgr == "pacman"
+  tags:
+    - skip_ansible_lint
+  register: update_result
+
+- name: update all software (yum)
+  yum:
+    name: "*"
+    state: latest
+  notify:
+    - reboot
+    - wait for the machine to be down
+    - wait for the machine to be up
+  when:
+    - ansible_pkg_mgr == "yum"
+  tags:
+    - skip_ansible_lint
+  register: update_result
+
+- name: update all software (zypper)
   zypper:
     name: "*"
     state: latest
@@ -40,20 +91,7 @@
     - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
-  register: ansibleroleupdate
-
-- name: update all software (Debian/Ubuntu)
-  apt:
-    update_cache: yes
-    upgrade: dist
-    autoremove: "{{ update_autoremove }}"
-  notify:
-    - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
-  when:
-    - ansible_pkg_mgr == "apt"
-  register: ansibleroleupdate
+  register: update_result
 
 - name: flush handlers
   meta: flush_handlers
