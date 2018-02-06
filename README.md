@@ -37,7 +37,7 @@ The simplest way possible:
 ```
 
 The role sets a variable so it's possible to understand if changes were made:
-- ansibleroleupdate
+- update_result
 
 Here is an example of how to use that variable:
 ```
@@ -52,7 +52,7 @@ Here is an example of how to use that variable:
         to: sysadmin@example.com
         subject: "server {{ ansible_hostsname }} updated"
       when:
-        - ansibleroleupdate.changed
+        - update_result.changed
 ```
 
 Install this role using `galaxy install robertdebock.update`.
