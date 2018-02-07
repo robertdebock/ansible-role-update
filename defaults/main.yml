@@ -17,3 +17,6 @@ update_down_sleep: 1
 
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
 update_autoremove: no
+
+# For APT (Debian/Ubuntu) only: update the apt cache if it's older than the cache_valid_time.  Set in seconds.
+update_cache_valid_time: 1
