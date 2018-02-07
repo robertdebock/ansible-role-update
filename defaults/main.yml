@@ -20,3 +20,8 @@ update_autoremove: no
 
 # For APT (Debian/Ubuntu) only: update the apt cache if it's older than the cache_valid_time.  Set in seconds.
 update_cache_valid_time: 1
+
+# When updating systems, a reboot may be required. Here you can select to:
+# "yes": Always reboot when packages have changed.
+# "no": Never reboot when packages have changed.
+update_reboot: yes

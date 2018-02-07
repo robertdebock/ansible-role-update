@@ -12,8 +12,6 @@
     upgrade: yes
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apk"
   register: update_result
@@ -25,8 +23,6 @@
     cache_valid_time: "{{ update_cache_valid_time }}"
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apt"
   register: update_result
@@ -44,8 +40,6 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
@@ -58,8 +52,6 @@
     upgrade: yes
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "pacman"
   tags:
@@ -72,8 +64,6 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "yum"
   tags:
@@ -86,8 +76,6 @@
     state: latest
   notify:
     - reboot
-    - wait for the machine to be down
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "zypper"
   tags:

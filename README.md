@@ -15,6 +15,7 @@ Role Variables
 
 - update_autoremove: Clean unused packages? (For APT distributions only)
 - update_cache_valid_time: Update the cache if it's older than the cache valid time (For APT distributions only)
+- update_reboot: Control the desired reboot behaviour. Set to "yes" (default) or "no".
 
 Dependencies
 ------------
