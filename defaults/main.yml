@@ -17,3 +17,6 @@ update_down_sleep: 1
 
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
 update_autoremove: no
+
+# For APT (Debian/Ubuntu) only: apt_upgrade type which can be: dist, full, yes, or safe
+update_upgrade_command: dist

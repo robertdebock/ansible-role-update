@@ -21,7 +21,7 @@
 - name: update all software (apt)
   apt:
     update_cache: yes
-    upgrade: dist
+    upgrade: "{{ update_upgrade_command }}"
   notify:
     - reboot
     - wait for the machine to be down

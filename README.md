@@ -14,6 +14,7 @@ Role Variables
 --------------
 
 - update_autoremove: Clean unused packages? (For APT distributions only)
+- update_upgrade_command: Type of upgrade: dist, yes, safe, or full.  (For APT distributions only)
 
 Dependencies
 ------------
