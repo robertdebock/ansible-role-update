@@ -5,9 +5,12 @@
   async: 1
   poll: 0
   ignore_errors: yes
-  changed_when: no
+  # changed_when: no
   when:
     - ansible_virtualization_type != "docker"
+    - update_reboot
+  notify:
+    - wait for the machine to be down
 
 - name: wait for the machine to be down
   wait_for_connection:
@@ -18,9 +21,13 @@
   until: connection | failed
   failed_when:
     - connection | success
+  changed_when:
+    - connection | failed
   retries: "{{ update_down_retries }}"
   when:
     - ansible_virtualization_type != "docker"
+  notify:
+    - wait for the machine to be up
 
 - name: wait for the machine to be up
   wait_for_connection:
