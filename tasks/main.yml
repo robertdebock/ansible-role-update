@@ -19,7 +19,7 @@
 - name: update all software (apt)
   apt:
     update_cache: yes
-    upgrade: dist
+    upgrade: "{{ update_upgrade_command }}"
     cache_valid_time: "{{ update_cache_valid_time }}"
   notify:
     - reboot
