@@ -6,6 +6,7 @@
   strategy: free
 
   roles:
+    - role: robertdebock.bootstrap
     - role: ansible-role-update
       update_autoremove: yes
 

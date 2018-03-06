@@ -21,6 +21,8 @@ Role Variables
 Dependencies
 ------------
 
+This role can be used to prepare your system:
+
 - robertdebock.bootstrap
 
 Download the dependencies by issuing this command:
@@ -36,6 +38,7 @@ The simplest way possible:
 - hosts: servers
 
   roles:
+    - robertdebock.bootstrap
     - robertdebock.update
 ```
 
