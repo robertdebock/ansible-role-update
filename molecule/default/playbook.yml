@@ -3,7 +3,6 @@
   hosts: all
   become: yes
   gather_facts: no
-  strategy: free
 
   roles:
     - role: robertdebock.bootstrap
