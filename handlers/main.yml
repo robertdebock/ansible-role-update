@@ -39,3 +39,4 @@
 
 - name: wait for the machine to be up
   wait_for_connection:
+    delay: "{{ update_up_delay }}"
