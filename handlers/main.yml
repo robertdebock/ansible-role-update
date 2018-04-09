@@ -13,29 +13,24 @@
     - wait for the machine to be down
     - wait for the machine to be up
 
-- name: wait for the machine to be down
-  local_action: wait_for
-  args:
-    host: "{{ ansible_ssh_host }}"
-    port: "{{ ansible_ssh_port | default('22') }}"
-    state: stopped
-
 # - name: wait for the machine to be down
-#   wait_for_connection:
-#     connect_timeout: "{{ update_down_connect_timeout }}"
-#     sleep: "{{ update_down_sleep }}"
-#     timeout: "{{ update_down_timeout }}"
-#   register: connection
-#   until: connection is failed
-#   retries: "{{ update_down_retries }}"
-#   failed_when:
-#     - connection is success
-#   changed_when:
-#     - connection is failed
-#   when:
-#     - ansible_virtualization_type != "docker"
-#   notify:
-#     - wait for the machine to be up
+#   local_action: wait_for
+#   args:
+#     host: "{{ ansible_ssh_host }}"
+#     port: "{{ ansible_ssh_port | default('22') }}"
+#     state: stopped
+
+- name: wait for the machine to be down
+  wait_for_connection:
+    connect_timeout: "{{ update_down_connect_timeout }}"
+    sleep: "{{ update_down_sleep }}"
+    timeout: "{{ update_down_timeout }}"
+  register: connection
+  retries: "{{ update_down_retries }}"
+  until: connection != 0
+  failed_when: connection.rc == -1
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: wait for the machine to be up
   wait_for_connection:
