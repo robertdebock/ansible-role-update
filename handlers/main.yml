@@ -14,6 +14,7 @@
 
 - name: wait for the machine to be down
   local_action: wait_for
+  args:
     host: {{ ansible_ssh_host }}
     port: {{ ansible_ssh_port }}
     state: stopped
