@@ -11,6 +11,7 @@
     - update_reboot
   notify:
     - wait for the machine to be down
+    - wait for the machine to be up
 
 - name: wait for the machine to be down
   local_action: wait_for
