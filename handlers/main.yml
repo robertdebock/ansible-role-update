@@ -20,7 +20,7 @@
   register: connection
   retries: "{{ update_down_retries }}"
   until: connection is not succeeded
-  failed_when: connection.rc is not failed
+  failed_when: connection is not failed
   when:
     - ansible_virtualization_type != "docker"
 
