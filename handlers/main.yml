@@ -5,20 +5,12 @@
   async: 1
   poll: 0
   ignore_errors: yes
-  # changed_when: no
   when:
     - ansible_virtualization_type != "docker"
     - update_reboot
   notify:
     - wait for the machine to be down
     - wait for the machine to be up
-
-# - name: wait for the machine to be down
-#   local_action: wait_for
-#   args:
-#     host: "{{ ansible_ssh_host }}"
-#     port: "{{ ansible_ssh_port | default('22') }}"
-#     state: stopped
 
 - name: wait for the machine to be down
   wait_for_connection:
@@ -27,8 +19,8 @@
     timeout: "{{ update_down_timeout }}"
   register: connection
   retries: "{{ update_down_retries }}"
-  until: connection != 0
-  failed_when: connection.rc == -1
+  until: connection is not succeeded
+  failed_when: connection.rc is not failed
   when:
     - ansible_virtualization_type != "docker"
 
