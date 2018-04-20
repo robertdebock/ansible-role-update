@@ -1,10 +1,10 @@
 ---
 # defaults file for update
 # How long to wait before sending a reboot.
-update_reboot_delay: 5
+update_reboot_delay: 4
 
 # How many times should we try to connect.
-update_down_retries: 180
+update_down_retries: 128
 
 # Maximum number of seconds to wait for a connection to happen before closing and retrying.
 update_down_connect_timeout: 1
@@ -16,7 +16,7 @@ update_down_timeout: 1
 update_down_sleep: 1
 
 # Number of seconds to wait before checking if the machine is up.
-update_up_delay: 10
+update_up_delay: 8
 
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
 update_autoremove: no
