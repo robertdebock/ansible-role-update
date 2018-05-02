@@ -18,10 +18,10 @@ platforms:
     box: debian/jessie64
   - name: update-debian-buster64
     box: desc/buster64
-  - name: update-fedora-26-cloud-base
-    box: fedora/26-cloud-base
   - name: update-fedora-27-cloud-base
     box: fedora/27-cloud-base
+  - name: update-fedora-28-cloud-base
+    box: fedora/28-cloud-base
   - name: update-opensuse-openSUSE-42-2-x86-64
     box: opensuse/openSUSE-42.2-x86_64
   - name: update-ubuntu-trusty
