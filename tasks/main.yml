@@ -92,6 +92,8 @@
       register: connection
       until: connection is failed
       retries: "{{ update_down_retries }}"
+  when:
+    - ansible_virtualization_type != "docker"
 
   rescue:
     - name: Wait for system up
