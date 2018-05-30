@@ -84,3 +84,15 @@
 
 - name: flush handlers
   meta: flush_handlers
+
+- name: reboot system
+  block:
+    - name: Wait for system down
+      wait_for_connection:
+      register: connection
+      until: connection is failed
+      retries: "{{ update_down_retries }}"
+
+  rescue:
+    - name: Wait for system up
+      wait_for_connection:
