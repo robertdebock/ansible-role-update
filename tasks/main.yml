@@ -62,13 +62,24 @@
   yum:
     name: "*"
     state: latest
-  notify:
-    - reboot
   when:
     - ansible_pkg_mgr == "yum"
   tags:
     - skip_ansible_lint
   register: update_result
+
+- name: see if a reboot is required
+  command: needs-restarting -r
+  register: needs-restarting
+  changed_when:
+    - needs-restarting.rc != 0
+  failed_when:
+    - needs-restarting.rc != 1
+    - needs-restarting.rc != 0
+  notify:
+    - reboot
+  when:
+    - ansible_pkg_mgr == "yum"
 
 - name: update all software (zypper)
   zypper:
