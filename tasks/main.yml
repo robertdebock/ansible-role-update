@@ -58,18 +58,39 @@
     - skip_ansible_lint
   register: update_result
 
-- name: update all software (yum)
+- name: update all software (yum/6)
   yum:
     name: "*"
     state: latest
   when:
     - ansible_pkg_mgr == "yum"
+    - ansible_distribution_major_version == "6"
+  tags:
+    - skip_ansible_lint
+  register: update_result
+  notify:
+    - reboot
+
+- name: update all software (yum/7)
+  yum:
+    name: "*"
+    state: latest
+  when:
+    - ansible_pkg_mgr == "yum"
+    - ansible_distribution_major_version == "7"
   tags:
     - skip_ansible_lint
   register: update_result
 
+- name: install needs-restarting
+  package:
+    name: needs-restarting
+  when:
+    - ansible_pkg_mgr == "yum"
+    - ansible_distribution_major_version == "7"
+
 - name: see if a reboot is required
-  command: needsrestarting -r
+  command: needs-restarting -r
   register: needsrestarting
   changed_when:
     - needsrestarting.rc != 0
@@ -80,6 +101,7 @@
     - reboot
   when:
     - ansible_pkg_mgr == "yum"
+    - ansible_distribution_major_version == "7"
 
 - name: update all software (zypper)
   zypper:
