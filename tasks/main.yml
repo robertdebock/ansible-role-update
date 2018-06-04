@@ -82,9 +82,9 @@
     - skip_ansible_lint
   register: update_result
 
-- name: install needs-restarting
+- name: install yum-utils
   package:
-    name: needs-restarting
+    name: yum-utils
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
