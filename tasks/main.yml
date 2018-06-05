@@ -102,6 +102,7 @@
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
+    - ansible_virtualization_type != "docker"
 
 - name: update all software (zypper)
   zypper:
