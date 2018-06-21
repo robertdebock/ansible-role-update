@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-fedora-28
-    image: fedora:28
+  - name: update-opensuse-tumbleweed
+    image: opensuse:tumbleweed
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: fedora-28
+  name: opensuse-tumbleweed
 verifier:
   name: goss
   lint:

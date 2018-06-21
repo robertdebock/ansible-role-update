@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-debian-buster
-    image: debian:buster
+  - name: update-alpine-edge
+    image: alpine:edge
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian-buster
+  name: alpine-edge
 verifier:
   name: goss
   lint:

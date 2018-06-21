@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-opensuse-42.2
-    image: opensuse:42.2
+  - name: update-centos-latest
+    image: centos:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: opensuse-42.2
+  name: centos-latest
 verifier:
   name: goss
   lint:

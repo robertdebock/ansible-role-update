@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-debian-stretch
-    image: debian:stretch
+  - name: update-fedora-latest
+    image: fedora:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian-stretch
+  name: fedora-latest
 verifier:
   name: goss
   lint:

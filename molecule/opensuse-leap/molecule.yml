@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-ubuntu-bionic
-    image: ubuntu:bionic
+  - name: update-opensuse-leap
+    image: opensuse:leap
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu-bionic
+  name: opensuse-leap
 verifier:
   name: goss
   lint:

@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-fedora-27
-    image: fedora:27
+  - name: update-debian-latest
+    image: debian:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: fedora-27
+  name: debian-latest
 verifier:
   name: goss
   lint:

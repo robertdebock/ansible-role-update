@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-alpine-3.7
-    image: alpine:3.7
+  - name: update-debian-stable
+    image: debian:stable
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: alpine-3.7
+  name: debian-stable
 verifier:
   name: goss
   lint:
