@@ -20,6 +20,12 @@ Access to a repository containing packages, likely on the internet.
 Role Variables
 --------------
 
+- update_reboot_delay: Timing around rebooting.
+- update_down_retries: Timing around rebooting.
+- update_down_connect_timeout: Timing around rebooting.
+- update_down_timeout: Timing around rebooting.
+- update_down_sleep: Timing around rebooting.
+- update_up_delay: Timing around rebooting.
 - update_autoremove: Clean unused packages? (For APT distributions only)
 - update_upgrade_command: Type of upgrade: dist, yes, safe, or full.  (For APT distributions only)
 - update_cache_valid_time: Update the cache if it's older than the cache valid time (For APT distributions only)
