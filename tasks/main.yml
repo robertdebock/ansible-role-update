@@ -5,7 +5,7 @@
     update_cache: yes
   when:
     - ansible_pkg_mgr == "apk"
-  changed_when: false
+  changed_when: no
 
 - name: update all software (apk)
   apk:
