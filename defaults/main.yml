@@ -3,18 +3,6 @@
 # How long to wait before sending a reboot.
 update_reboot_delay: 4
 
-# How many times should we try to connect.
-update_down_retries: 128
-
-# Maximum number of seconds to wait for a connection to happen before closing and retrying.
-update_down_connect_timeout: 1
-
-# Maximum number of seconds to wait for.
-update_down_timeout: 1
-
-# Number of seconds to sleep between checks.
-update_down_sleep: 1
-
 # Number of seconds to wait before checking if the machine is up.
 update_up_delay: 8
 
