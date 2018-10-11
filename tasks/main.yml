@@ -11,7 +11,8 @@
   apk:
     upgrade: yes
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apk"
   register: update_result
@@ -22,7 +23,8 @@
     upgrade: "{{ update_upgrade_command }}"
     cache_valid_time: "{{ update_cache_valid_time }}"
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "apt"
   register: update_result
@@ -39,7 +41,8 @@
     name: "*"
     state: latest
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
@@ -51,7 +54,8 @@
     update_cache: yes
     upgrade: yes
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "pacman"
   tags:
@@ -69,7 +73,8 @@
     - skip_ansible_lint
   register: update_result
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
 
 - name: update all software (yum/7)
   yum:
@@ -98,7 +103,8 @@
     - needsrestarting.rc != 1
     - needsrestarting.rc != 0
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
@@ -109,7 +115,8 @@
     name: "*"
     state: latest
   notify:
-    - reboot
+    - reboot the machine
+    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "zypper"
   tags:
