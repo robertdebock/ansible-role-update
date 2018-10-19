@@ -96,9 +96,6 @@
   zypper:
     name: "*"
     state: latest
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "zypper"
   tags:
