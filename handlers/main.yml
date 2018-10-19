@@ -1,14 +1,2 @@
 ---
 # handlers file for update
-- name: reboot the machine
-  shell: (sleep "{{ update_reboot_delay }}" && shutdown -r now "ansible-role-update" &)
-  async: 1
-  poll: 0
-  ignore_errors: yes
-  when:
-    - ansible_virtualization_type != "docker"
-    - update_reboot
-
-- name: wait for the machine to be up
-  wait_for_connection:
-    delay: "{{ update_up_delay }}"

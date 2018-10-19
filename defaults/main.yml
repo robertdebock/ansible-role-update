@@ -1,11 +1,5 @@
 ---
 # defaults file for update
-# How long to wait before sending a reboot.
-update_reboot_delay: 4
-
-# Number of seconds to wait before checking if the machine is up.
-update_up_delay: 8
-
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
 update_autoremove: no
 

@@ -10,24 +10,18 @@
 - name: update all software (apk)
   apk:
     upgrade: yes
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
+  register: update_result
   when:
     - ansible_pkg_mgr == "apk"
-  register: update_result
 
 - name: update all software (apt)
   apt:
     update_cache: yes
     upgrade: "{{ update_upgrade_command }}"
     cache_valid_time: "{{ update_cache_valid_time }}"
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
+  register: update_result
   when:
     - ansible_pkg_mgr == "apt"
-  register: update_result
 
 - name: apt autoremove (apt)
   apt:
@@ -40,27 +34,21 @@
   dnf:
     name: "*"
     state: latest
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
+  register: update_result
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
     - skip_ansible_lint
-  register: update_result
 
 - name: update all software (pacman)
   pacman:
     update_cache: yes
     upgrade: yes
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
+  register: update_result
   when:
     - ansible_pkg_mgr == "pacman"
   tags:
     - skip_ansible_lint
-  register: update_result
 
 - name: update all software (yum/6)
   yum:
@@ -72,9 +60,6 @@
   tags:
     - skip_ansible_lint
   register: update_result
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
 
 - name: update all software (yum/7)
   yum:
@@ -102,9 +87,6 @@
   failed_when:
     - needsrestarting.rc != 1
     - needsrestarting.rc != 0
-  notify:
-    - reboot the machine
-    - wait for the machine to be up
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
@@ -123,5 +105,10 @@
     - skip_ansible_lint
   register: update_result
 
-- name: flush handlers
-  meta: flush_handlers
+- name: reboot for updates
+  include_role:
+    name: robertdebock.reboot
+  when:
+    - update_result.changed or
+      needsrestarting.changed
+    - update_reboot
