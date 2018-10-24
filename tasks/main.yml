@@ -89,10 +89,6 @@
     - skip_ansible_lint
   register: update_result_zypper
 
-- name: show shit
-  debug:
-    var: update_result
-
 - name: reboot for updates
   include_role:
     name: robertdebock.reboot
