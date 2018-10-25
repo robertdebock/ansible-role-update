@@ -14,9 +14,6 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
-    options:
-      x:
-        - ANSIBLE0016
 scenario:
   name: debian-latest
 verifier:

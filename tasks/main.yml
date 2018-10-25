@@ -103,3 +103,5 @@
       update_result_yum_7.changed or
       update_result_zypper.changed
     - update_reboot
+  tags:
+    - skip_ansible_lint
