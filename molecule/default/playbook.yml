@@ -1,9 +1,9 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: false
   become: true
+  gather_facts: false
 
   roles:
-    - role: robertdebock.bootstrap
-    - role: ansible-role-update
+    - robertdebock.bootstrap
+    - ansible-role-update

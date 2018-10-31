@@ -3,7 +3,99 @@ update
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-update)
 
-Provides updates for your system.
+This role can be used to update you system. It includes an optional reboot.
+
+
+Example Playbook
+----------------
+
+This example is taken from `molecule/default/playbook.yml`:
+```
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: false
+
+  roles:
+    - robertdebock.bootstrap
+    - robertdebock.update
+
+```
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for update
+
+# For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
+update_autoremove: no
+
+# For APT (Debian/Ubuntu) only: apt_upgrade type which can be: dist, full, yes, or safe
+update_upgrade_command: dist
+
+# For APT (Debian/Ubuntu) only: update the apt cache if it's older than the cache_valid_time.  Set in seconds.
+update_cache_valid_time: 1
+
+# When updating systems, a reboot may be required. Here you can select to:
+# "yes": Always reboot when packages have changed.
+# "no": Never reboot when packages have changed.
+update_reboot: yes
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
+
+---
+- robertdebock.bootstrap
+- robertdebock.reboot
+
+
+Context
+-------
+
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
+
+Here is an overview of related roles:
+![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/update.png "Dependency")
+
+
+Compatibility
+-------------
+
+This role has been tested against the following distributions and Ansible version:
+
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible 2.7|ansible devel|
+|------------|-----------|-----------|-----------|-----------|-------------|
+|alpine-edge*|yes|yes|yes|yes|yes*|
+|alpine-latest|yes|yes|yes|yes|yes*|
+|archlinux|yes|yes|yes|yes|yes*|
+|centos-6|yes|yes|yes|yes|yes*|
+|centos-latest|yes|yes|yes|yes|yes*|
+|debian-latest|yes|yes|yes|yes|yes*|
+|debian-stable|yes|yes|yes|yes|yes*|
+|debian-unstable*|yes|yes|yes|yes|yes*|
+|fedora-latest|yes|yes|yes|yes|yes*|
+|fedora-rawhide*|yes|yes|yes|yes|yes*|
+|opensuse-leap|yes|yes|yes|yes|yes*|
+|opensuse-tumbleweed|yes|yes|yes|yes|yes*|
+|ubuntu-artful|yes|yes|yes|yes|yes*|
+|ubuntu-devel*|yes|yes|yes|yes|yes*|
+|ubuntu-latest|yes|yes|yes|yes|yes*|
+
+A single star means the build may fail, it's marked as an experimental build.
+
+Testing
+-------
 
 [Unit tests](https://travis-ci.org/robertdebock/ansible-role-update) are done on every commit and periodically.
 
@@ -14,100 +106,14 @@ To test this role locally please use [Molecule](https://github.com/metacloud/mol
 pip install molecule
 molecule test
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Context
--------
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
-
-Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/update.png "Dependency")
-
-Requirements
-------------
-
-Access to a repository containing packages, likely on the internet.
-
-Role Variables
---------------
-
-- update_reboot_delay: Timing around rebooting.
-- update_up_delay: Timing around rebooting.
-- update_autoremove: Clean unused packages? (For APT distributions only)
-- update_upgrade_command: Type of upgrade: dist, yes, safe, or full.  (For APT distributions only)
-- update_cache_valid_time: Update the cache if it's older than the cache valid time (For APT distributions only)
-- update_reboot: Control the desired reboot behaviour. Set to "yes" (default) or "no".
-
-Dependencies
-------------
-
-This role can be used to prepare your system:
-
-- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
-
-Download the dependencies by issuing this command:
-```
-ansible-galaxy install --role-file requirements.yml
-```
-
-Compatibility
--------------
-
-This role has been tested against the following distributions and Ansible version:
-
-|distribution|ansible 2.4|ansible 2.5|ansible 2.6|
-|------------|-----------|-----------|-----------|
-|alpine-edge|yes|yes|yes|
-|alpine-latest|yes|yes|yes|
-|archlinux|yes|yes|yes|
-|centos-6|yes|yes|yes|
-|centos-latest|yes|yes|yes|
-|debian-latest|yes|yes|yes|
-|debian-stable|yes|yes|yes|
-|fedora-latest|yes|yes|yes|
-|fedora-rawhide|yes|yes|yes|
-|opensuse-leap|yes|yes|yes|
-|opensuse-tumbleweed|yes|yes|yes|
-|ubuntu-artful|yes|yes|yes|
-|ubuntu-latest|yes|yes|yes|
-
-Example Playbook
-----------------
-
-The simplest way possible:
-```
-- hosts: servers
-
-  roles:
-    - robertdebock.bootstrap
-    - robertdebock.update
-```
-
-The role sets a variable so it's possible to understand if changes were made:
-- update_result
-
-Here is an example of how to use that variable:
-```
-- hosts: servers
-
-  roles:
-    - robertdebock.update
-
-  tasks:
-    - name: send email
-      mail:
-        to: sysadmin@example.com
-        subject: "server {{ ansible_hostsname }} updated"
-      when:
-        - update_result.changed
-```
-
-Install this role using `galaxy install robertdebock.update`.
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------
