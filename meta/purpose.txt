@@ -1,1 +1,0 @@
-This role can be used to update you system. It includes an optional reboot.

@@ -3,8 +3,7 @@ update
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-update)
 
-This role can be used to update you system. It includes an optional reboot.
-
+The purpose of this role is to install updates on your system.
 
 Example Playbook
 ----------------
