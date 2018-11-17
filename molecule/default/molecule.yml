@@ -39,7 +39,7 @@ platforms:
   - name: update-ubuntu-devel
     image: ubuntu:devel
   - name: update-ubuntu-latest
-    image: ubuntu-latest
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
