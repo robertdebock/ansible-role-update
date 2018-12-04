@@ -6,13 +6,18 @@
   when:
     - ansible_pkg_mgr == "apk"
   changed_when: no
+  register: update_update_cache_apk
+  until: update_update_cache_apk
+  retries: 3
 
 - name: update all software (apk)
   apk:
     upgrade: yes
-  register: update_result_apk
   when:
     - ansible_pkg_mgr == "apk"
+  register: update_update_all_software_apk
+  until: update_update_all_software_apk
+  retries: 3
 
 - name: update all software (apt)
   apt:
@@ -22,6 +27,8 @@
   register: update_result_apt
   when:
     - ansible_pkg_mgr == "apt"
+  until: update_all_software_apt
+  retries: 3
 
 - name: apt autoremove (apt)
   apt:
@@ -78,6 +85,9 @@
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
+  register: update_install_yum_utils
+  until: update_install_yum_utils
+  retries: 3
 
 - name: update all software (zypper)
   zypper:
@@ -95,8 +105,8 @@
   vars:
     reboot_message: rebooting for robertdebock/ansible-role-update
   when:
-    - update_result_apk.changed or
-      update_result_apt.changed or
+    - update_update_all_software_apk.changed od
+      update_all_software_apt.changed or
       update_result_dnf.changed or
       update_result_pacman.changed or
       update_result_yum_6.changed or
