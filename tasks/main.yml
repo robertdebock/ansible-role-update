@@ -24,7 +24,7 @@
     update_cache: yes
     upgrade: "{{ update_upgrade_command }}"
     cache_valid_time: "{{ update_cache_valid_time }}"
-  register: update_result_apt
+  register: update_all_software_apt
   when:
     - ansible_pkg_mgr == "apt"
   until: update_all_software_apt
@@ -105,7 +105,7 @@
   vars:
     reboot_message: rebooting for robertdebock/ansible-role-update
   when:
-    - update_update_all_software_apk.changed od
+    - update_update_all_software_apk.changed or
       update_all_software_apt.changed or
       update_result_dnf.changed or
       update_result_pacman.changed or
