@@ -99,6 +99,9 @@
     - skip_ansible_lint
   register: update_result_zypper
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: reboot for updates
   include_role:
     name: robertdebock.reboot
