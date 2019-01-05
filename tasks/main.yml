@@ -36,6 +36,8 @@
   when:
     - ansible_pkg_mgr == "apt"
     - update_autoremove == "yes"
+  tags:
+    - skip_ansible_lint
 
 - name: update all software (dnf)
   dnf:
