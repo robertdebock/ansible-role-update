@@ -15,7 +15,7 @@ platforms:
     image: alpine:latest
     command: sh -c "while true ; do sleep 1 ; done"
   - name: update-archlinux
-    image: base/archlinux
+    image: archlinux/base
   - name: update-centos-6
     image: centos:6
   - name: update-centos-latest
