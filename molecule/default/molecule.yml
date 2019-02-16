@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: update-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: update-ubuntu-artful
-    image: ubuntu:artful
+  - name: update-ubuntu-latest
+    image: ubuntu:latest
+  - name: update-ubuntu-rolling
+    image: ubuntu:rolling
   - name: update-ubuntu-devel
     image: ubuntu:devel
   - name: update-ubuntu-latest

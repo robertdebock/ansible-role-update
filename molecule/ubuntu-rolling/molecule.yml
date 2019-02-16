@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: update-ubuntu-artful
-    image: ubuntu:artful
+  - name: update-ubuntu-rolling
+    image: ubuntu:rolling
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu-artful
+  name: ubuntu-rolling
 verifier:
   name: goss
   lint:
