@@ -32,8 +32,6 @@ platforms:
     image: fedora:rawhide
   - name: update-opensuse-leap
     image: opensuse:leap
-  - name: update-opensuse-tumbleweed
-    image: opensuse:tumbleweed
   - name: update-ubuntu-latest
     image: ubuntu:latest
   - name: update-ubuntu-rolling
