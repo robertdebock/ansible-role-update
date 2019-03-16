@@ -3,53 +3,64 @@ dependency:
   name: galaxy
   options:
     role-file: requirements.yml
-driver:
-  name: docker
 lint:
   name: yamllint
+driver:
+  name: docker
 platforms:
   - name: update-alpine-edge
     image: alpine:edge
+    pre_build_image: yes
     command: sh -c "while true ; do sleep 1 ; done"
   - name: update-alpine-latest
     image: alpine:latest
+    pre_build_image: yes
     command: sh -c "while true ; do sleep 1 ; done"
   - name: update-archlinux
     image: archlinux/base
+    pre_build_image: yes
   - name: update-centos-6
     image: centos:6
+    pre_build_image: yes
   - name: update-centos-latest
     image: centos:latest
+    pre_build_image: yes
   - name: update-debian-latest
     image: debian:latest
+    pre_build_image: yes
   - name: update-debian-stable
     image: debian:stable
+    pre_build_image: yes
   - name: update-debian-unstable
     image: debian:unstable
+    pre_build_image: yes
   - name: update-fedora-latest
     image: fedora:latest
+    pre_build_image: yes
   - name: update-fedora-rawhide
     image: fedora:rawhide
+    pre_build_image: yes
   - name: update-opensuse-leap
     image: opensuse:leap
+    pre_build_image: yes
   - name: update-ubuntu-latest
     image: ubuntu:latest
+    pre_build_image: yes
   - name: update-ubuntu-rolling
     image: ubuntu:rolling
+    pre_build_image: yes
   - name: update-ubuntu-devel
     image: ubuntu:devel
+    pre_build_image: yes
   - name: update-ubuntu-latest
     image: ubuntu:latest
+    pre_build_image: yes
 provisioner:
   name: ansible
-  inventory:
-    host_vars:
-      update-fedora-rawhide:
-        ansible_python_interpreter: /usr/bin/python3
+  playbooks:
+    prepare: ../resources/prepare.yml
+    converge: ../resources/playbook.yml
   lint:
     name: ansible-lint
-  config_options:
-    defaults:
-      callback_plugins: /usr/lib/python2.7/site-packages/ara/plugins/callbacks
 scenario:
   name: default
