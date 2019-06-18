@@ -7,7 +7,7 @@
     - ansible_pkg_mgr == "apk"
   changed_when: no
   register: update_update_cache_apk
-  until: update_update_cache_apk
+  until: update_update_cache_apk is succeeded
   retries: 3
 
 - name: update all software (apk)
@@ -16,7 +16,7 @@
   when:
     - ansible_pkg_mgr == "apk"
   register: update_update_all_software_apk
-  until: update_update_all_software_apk
+  until: update_update_all_software_apk is succeeded
   retries: 3
 
 - name: update all software (apt)
@@ -27,7 +27,7 @@
   register: update_all_software_apt
   when:
     - ansible_pkg_mgr == "apt"
-  until: update_all_software_apt
+  until: update_all_software_apt is succeeded
   retries: 3
 
 - name: apt autoremove (apt)
@@ -88,7 +88,7 @@
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
   register: update_install_yum_utils
-  until: update_install_yum_utils
+  until: update_install_yum_utils is succeeded
   retries: 3
 
 - name: update all software (zypper)
