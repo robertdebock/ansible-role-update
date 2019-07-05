@@ -114,6 +114,6 @@
       update_result_yum_6.changed or
       update_result_yum_7.changed or
       update_result_zypper.changed
-    - update_reboot
+    - update_reboot | bool
   tags:
     - skip_ansible_lint
