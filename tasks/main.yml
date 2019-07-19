@@ -107,7 +107,8 @@
   vars:
     reboot_message: rebooting for robertdebock/ansible-role-update
   when:
-    - update_update_all_software_apk.changed or
+    - update_reboot and
+      update_update_all_software_apk.changed or
       update_all_software_apt.changed or
       update_result_dnf.changed or
       update_result_pacman.changed or
