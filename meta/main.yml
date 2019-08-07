@@ -42,4 +42,4 @@ galaxy_info:
     - ubuntu
 
 dependencies:
-  - robertdebock.reboot
+  - cjsteel.reboot
