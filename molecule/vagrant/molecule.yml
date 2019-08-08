@@ -10,10 +10,8 @@ driver:
   provider:
     name: virtualbox
 platforms:
-  - name: update-debian
-    box: debian/stretch64
-  - name: update-fedora
-    box: fedora/30-cloud-base
+  - name: update-bionic
+    box: ubuntu/bionic64
 provisioner:
   name: ansible
   playbooks:

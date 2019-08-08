@@ -1,8 +1,13 @@
 update
 =========
 
+updates target systems using targets package manager, for example apt update.
+
+Based on the fine role created by [Robert de Bock](https://robertdebock.nl/) with some minor modification added.
+
+
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-update"><img src="https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master" alt="Build status" align="left"/></a>
+<a href="https://travis-ci.org/cjsteel/ansible-role-update"><img src="https://travis-ci.org/cjsteel/ansible-role-update.svg?branch=master" alt="Build status" align="left"/></a>
 
 Install updates on your system.
 
@@ -18,7 +23,7 @@ This example is taken from `molecule/resources/playbook.yml`:
   gather_facts: yes
 
   roles:
-    - robertdebock.update
+    - cjsteel.update
 ```
 
 The machine you are running this on, may need to be prepared.
@@ -30,7 +35,9 @@ The machine you are running this on, may need to be prepared.
   gather_facts: no
 
   roles:
-    - robertdebock.bootstrap
+    - role: cjsteel.bootstrap
+      vars:
+        - update_reboot: yes
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -55,7 +62,7 @@ update_cache_valid_time: 1
 # When updating systems, a reboot may be required. Here you can select to:
 # "yes": Always reboot when packages have changed.
 # "no": Never reboot when packages have changed.
-update_reboot: yes
+update_reboot: no
 ```
 
 Requirements
@@ -68,24 +75,20 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```yaml
 ---
-- robertdebock.bootstrap
-- robertdebock.reboot
-
+- cjsteel.bootstrap
+- cjsteel.reboot
 ```
 
 Context
 -------
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
-
-Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/update.png "Dependency")
+The original version of this role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 
 Compatibility
 -------------
 
-This role has been tested against the following distributions and Ansible version:
+The original version of the role has been tested against the following distributions and Ansible version:
 
 |distribution|ansible 2.7|ansible 2.8|ansible devel|
 |------------|-----------|-----------|-------------|
@@ -108,9 +111,11 @@ A single star means the build may fail, it's marked as an experimental build.
 Testing
 -------
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-update) are done on every commit and periodically.
+## This role
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-update/issues)
+* Ubuntu bionic
+
+If you find issues, please register them in [GitHub](https://github.com/cjsteel/ansible-role-update/issues)
 
 To test this role locally please use [Molecule](https://github.com/ansible/molecule):
 ```
@@ -121,6 +126,10 @@ molecule test
 To test on Amazon EC2, configure [~/.aws/credentials](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) and set a region using `export AWS_REGION=eu-central-1` before running `molecule test --scenario-name ec2`.
 
 There are many specific scenarios available, please have a look in the `molecule/` directory.
+
+## Original roles testing
+
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-update) are done on every commit and periodically.
 
 License
 -------
