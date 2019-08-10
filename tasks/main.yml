@@ -103,9 +103,9 @@
 
 - name: reboot for updates
   include_role:
-    name: robertdebock.reboot
+    name: haghighi_ahmad.reboot
   vars:
-    reboot_message: rebooting for robertdebock/ansible-role-update
+    reboot_message: rebooting for haghighi_ahmad/ansible-role-update
   when:
     - update_update_all_software_apk.changed or
       update_all_software_apt.changed or

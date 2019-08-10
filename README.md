@@ -2,9 +2,11 @@ update
 =========
 
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-update"><img src="https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master" alt="Build status" align="left"/></a>
+<a href="https://travis-ci.org/haghighi-ahmad/ansible-role-update"><img src="https://travis-ci.org/haghighi-ahmad/ansible-role-update.svg?branch=master" alt="Build status" align="left"/></a>
 
 Install updates on your system.
+
+**Upstream: [robertdebock.update](https://github.com/robertdebock/ansible-role-update).**
 
 Example Playbook
 ----------------
@@ -18,7 +20,7 @@ This example is taken from `molecule/resources/playbook.yml`:
   gather_facts: yes
 
   roles:
-    - robertdebock.update
+    - haghighi_ahmad.update
 ```
 
 The machine you are running this on, may need to be prepared.
@@ -30,7 +32,7 @@ The machine you are running this on, may need to be prepared.
   gather_facts: no
 
   roles:
-    - robertdebock.bootstrap
+    - haghighi_ahmad.bootstrap
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -68,19 +70,10 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```yaml
 ---
-- robertdebock.bootstrap
-- robertdebock.reboot
+- haghighi_ahmad.bootstrap
+- haghighi_ahmad.reboot
 
 ```
-
-Context
--------
-
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
-
-Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/update.png "Dependency")
-
 
 Compatibility
 -------------
@@ -108,9 +101,9 @@ A single star means the build may fail, it's marked as an experimental build.
 Testing
 -------
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-update) are done on every commit and periodically.
+[Unit tests](https://travis-ci.org/haghighi-ahmad/ansible-role-update) are done on every commit and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-update/issues)
+If you find issues, please register them in [GitHub](https://github.com/haghighi-ahmad/ansible-role-update/issues)
 
 To test this role locally please use [Molecule](https://github.com/ansible/molecule):
 ```
@@ -130,5 +123,5 @@ Apache-2.0
 
 Author Information
 ------------------
-
 [Robert de Bock](https://robertdebock.nl/)
+[Ahmad Haghighi](https://haghighi.site) 

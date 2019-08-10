@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Robert de Bock
+  author: Ahmad Haghighi
   role_name: update
   description: Install updates on your system.
   license: Apache-2.0
@@ -42,4 +42,4 @@ galaxy_info:
     - ubuntu
 
 dependencies:
-  - robertdebock.reboot
+  - haghighi_ahmad.reboot
