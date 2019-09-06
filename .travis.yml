@@ -10,7 +10,7 @@ env:
   - version=">=2.7,<2.8" distro="alpine-edge"
   - version="" distro="alpine-edge"
   - version="devel" distro="alpine-edge"
-  - version=">=2.7,<2.8" distro="archlinux"
+  - version=">=2.7,<2.8" distro="archlinux" expectation="fail"
   - version="" distro="archlinux"
   - version="devel" distro="archlinux"
   - version=">=2.7,<2.8" distro="centos-6"

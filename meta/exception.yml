@@ -1,0 +1,4 @@
+---
+exceptions:
+  - variation: Archlinux & Ansible 2.7
+    reason: New-style module did not handle its own exit
