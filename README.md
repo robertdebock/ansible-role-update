@@ -6,6 +6,9 @@ update
 
 Install updates on your system.
 
+<img src="https://img.shields.io/ansible/role/d/22417"/>
+<img src="https://img.shields.io/ansible/quality/22417"/>
+
 Example Playbook
 ----------------
 
@@ -71,6 +74,19 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.bootstrap
 - robertdebock.reboot
 
+```
+
+This role uses the following modules:
+```yaml
+---
+- apk
+- apt
+- dnf
+- include_role
+- package
+- pacman
+- yum
+- zypper
 ```
 
 Context
