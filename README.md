@@ -2,12 +2,9 @@ update
 =========
 
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-update"><img src="https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master" alt="Build status" align="left"/></a>
+<a href="https://travis-ci.org/robertdebock/ansible-role-update"> <img src="https://travis-ci.org/robertdebock/ansible-role-update.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/22417"/> <img src="https://img.shields.io/ansible/quality/22417"/>
 
 Install updates on your system.
-
-<img src="https://img.shields.io/ansible/role/d/22417"/>
-<img src="https://img.shields.io/ansible/quality/22417"/>
 
 Example Playbook
 ----------------
