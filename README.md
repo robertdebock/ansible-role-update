@@ -119,7 +119,6 @@ Some variarations of the build matrix do not work. These are the variations and 
 | Archlinux & Ansible 2.7 | New-style module did not handle its own exit |
 
 
-
 Testing
 -------
 
