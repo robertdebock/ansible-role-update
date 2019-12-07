@@ -38,7 +38,7 @@ galaxy_info:
   galaxy_tags:
     - update
     - centos
-    - rhel
+    - redhat
 
 dependencies:
   - robertdebock.reboot
