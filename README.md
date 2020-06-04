@@ -2,9 +2,9 @@
 
 Install updates on your system.
 
-|Travis|GitHub|Quality|Downloads|
-|------|------|-------|---------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-update)|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![quality](https://img.shields.io/ansible/quality/22417)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/22417)](https://galaxy.ansible.com/robertdebock/update)|
+|Travis|GitHub|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-update)|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![quality](https://img.shields.io/ansible/quality/22417)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/22417)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
