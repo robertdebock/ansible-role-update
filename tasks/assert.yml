@@ -1,0 +1,26 @@
+---
+- name: test if update_autoremove is set correctly
+  assert:
+    that:
+      - update_autoremove is defined
+      - update_autoremove | type_debug == "bool"
+
+- name: test if update_upgrade_command is set correctly
+  assert:
+    that:
+      - update_upgrade_command is defined
+      - update_upgrade_command | length > 0
+      - update_upgrade_command in ["dist", "full", "yes", "safe"]
+
+- name: test if update_cache_valid_time is set correctly
+  assert:
+    that:
+      - update_cache_valid_time is defined
+      - update_cache_valid_time | int
+      - update_cache_valid_time | int >= 0
+
+- name: test if update_reboot is set correctly
+  assert:
+    that:
+      - update_reboot is defined
+      - update_reboot | type_debug == "bool"

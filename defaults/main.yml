@@ -7,7 +7,7 @@ update_autoremove: no
 # For APT (Debian/Ubuntu) only: apt_upgrade type which can be: dist, full, yes, or safe
 update_upgrade_command: dist
 
-# For APT (Debian/Ubuntu) only: update the apt cache if it's older than the cache_valid_time.  Set in seconds.
+# For APT (Debian/Ubuntu) only: update the apt cache if it's older than the cache_valid_time. Set in seconds.
 update_cache_valid_time: 1
 
 # When updating systems, a reboot may be required. Here you can select to:

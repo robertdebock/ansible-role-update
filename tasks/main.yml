@@ -1,5 +1,8 @@
 ---
 # tasks file for update
+- name: include assert.yml
+  include_tasks: assert.yml
+
 - name: update cache (apk)
   apk:
     update_cache: yes
