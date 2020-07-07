@@ -16,6 +16,8 @@
 - name: update all software (apk)
   apk:
     upgrade: yes
+  notify:
+    - reboot
   when:
     - ansible_pkg_mgr == "apk"
   register: update_update_all_software_apk
@@ -27,11 +29,13 @@
     update_cache: yes
     upgrade: "{{ update_upgrade_command }}"
     cache_valid_time: "{{ update_cache_valid_time }}"
+  notify:
+    - reboot
   register: update_all_software_apt
-  when:
-    - ansible_pkg_mgr == "apt"
   until: update_all_software_apt is succeeded
   retries: 3
+  when:
+    - ansible_pkg_mgr == "apt"
 
 - name: apt autoremove (apt)
   apt:
@@ -46,7 +50,11 @@
   dnf:
     name: "*"
     state: latest
+  notify:
+    - reboot
   register: update_result_dnf
+  until: update_result_dnf is succeeded
+  retries: 3
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
@@ -56,7 +64,10 @@
   pacman:
     update_cache: yes
     upgrade: yes
+  notify:
+    - reboot
   register: update_result_pacman
+  until: update_result_pacman is succeeded
   when:
     - ansible_pkg_mgr == "pacman"
   tags:
@@ -66,23 +77,31 @@
   yum:
     name: "*"
     state: latest
+  notify:
+    - reboot
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "6"
   tags:
     - skip_ansible_lint
   register: update_result_yum_6
+  until: update_result_yum_6 is succeeded
+  retries: 3
 
 - name: update all software (yum/7)
   yum:
     name: "*"
     state: latest
+  notify:
+    - reboot
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
   tags:
     - skip_ansible_lint
   register: update_result_yum_7
+  until: update_result_yum_7 is succeeded
+  retries: 3
 
 - name: install yum-utils
   package:
@@ -98,25 +117,11 @@
   zypper:
     name: "*"
     state: latest
+  notify:
+    - reboot
   when:
     - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
   register: update_result_zypper
-
-- name: reboot for updates
-  include_role:
-    name: robertdebock.reboot
-  vars:
-    reboot_message: rebooting for robertdebock/ansible-role-update
-  when:
-    - update_update_all_software_apk.changed or
-      update_all_software_apt.changed or
-      update_result_dnf.changed or
-      update_result_pacman.changed or
-      update_result_yum_6.changed or
-      update_result_yum_7.changed or
-      update_result_zypper.changed
-    - update_reboot | bool
-  tags:
-    - skip_ansible_lint
+  until: update_result_zypper
