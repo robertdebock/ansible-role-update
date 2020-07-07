@@ -4,3 +4,5 @@
   reboot:
   when:
     - update_reboot | bool
+    - ansible_connection != "docker"
+
