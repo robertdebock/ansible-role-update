@@ -9,9 +9,6 @@
   when:
     - ansible_pkg_mgr == "apk"
   changed_when: no
-  register: update_update_cache_apk
-  until: update_update_cache_apk is succeeded
-  retries: 3
 
 - name: update all software (apk)
   apk:
@@ -20,9 +17,6 @@
     - reboot
   when:
     - ansible_pkg_mgr == "apk"
-  register: update_update_all_software_apk
-  until: update_update_all_software_apk is succeeded
-  retries: 3
 
 - name: update all software (apt)
   apt:
@@ -31,9 +25,6 @@
     cache_valid_time: "{{ update_cache_valid_time }}"
   notify:
     - reboot
-  register: update_all_software_apt
-  until: update_all_software_apt is succeeded
-  retries: 3
   when:
     - ansible_pkg_mgr == "apt"
 
@@ -52,9 +43,6 @@
     state: latest
   notify:
     - reboot
-  register: update_result_dnf
-  until: update_result_dnf is succeeded
-  retries: 3
   when:
     - ansible_pkg_mgr == "dnf"
   tags:
@@ -66,8 +54,6 @@
     upgrade: yes
   notify:
     - reboot
-  register: update_result_pacman
-  until: update_result_pacman is succeeded
   when:
     - ansible_pkg_mgr == "pacman"
   tags:
@@ -84,9 +70,6 @@
     - ansible_distribution_major_version == "6"
   tags:
     - skip_ansible_lint
-  register: update_result_yum_6
-  until: update_result_yum_6 is succeeded
-  retries: 3
 
 - name: update all software (yum/7)
   yum:
@@ -99,9 +82,6 @@
     - ansible_distribution_major_version == "7"
   tags:
     - skip_ansible_lint
-  register: update_result_yum_7
-  until: update_result_yum_7 is succeeded
-  retries: 3
 
 - name: install yum-utils
   package:
@@ -109,9 +89,6 @@
   when:
     - ansible_pkg_mgr == "yum"
     - ansible_distribution_major_version == "7"
-  register: update_install_yum_utils
-  until: update_install_yum_utils is succeeded
-  retries: 3
 
 - name: update all software (zypper)
   zypper:
@@ -123,5 +100,3 @@
     - ansible_pkg_mgr == "zypper"
   tags:
     - skip_ansible_lint
-  register: update_result_zypper
-  until: update_result_zypper
