@@ -4,6 +4,7 @@
     that:
       - update_autoremove is defined
       - update_autoremove | type_debug == "bool"
+    quiet: yes
 
 - name: test if update_upgrade_command is set correctly
   assert:
@@ -11,6 +12,7 @@
       - update_upgrade_command is defined
       - update_upgrade_command | length > 0
       - update_upgrade_command in ["dist", "full", "yes", "safe"]
+    quiet: yes
 
 - name: test if update_cache_valid_time is set correctly
   assert:
@@ -18,9 +20,11 @@
       - update_cache_valid_time is defined
       - update_cache_valid_time | int
       - update_cache_valid_time | int >= 0
+    quiet: yes
 
 - name: test if update_reboot is set correctly
   assert:
     that:
       - update_reboot is defined
       - update_reboot | type_debug == "bool"
+    quiet: yes
