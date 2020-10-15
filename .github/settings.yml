@@ -5,3 +5,4 @@
 repository:
   description: Install updates on your system.
   homepage: https://robertdebock.nl/
+  topics: update, ansible, molecule, tox, playbook, hacktoberfest
