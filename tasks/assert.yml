@@ -18,7 +18,7 @@
   assert:
     that:
       - update_cache_valid_time is defined
-      - update_cache_valid_time | int
+      - update_cache_valid_time is number
       - update_cache_valid_time | int >= 0
     quiet: yes
 
