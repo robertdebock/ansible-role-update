@@ -18,7 +18,7 @@
     that:
       - update_cache_valid_time is defined
       - update_cache_valid_time is number
-      - update_cache_valid_time | int >= 0
+      - update_cache_valid_time >= 0
     quiet: yes
 
 - name: test if update_reboot is set correctly
