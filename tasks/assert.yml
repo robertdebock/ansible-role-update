@@ -3,7 +3,7 @@
   assert:
     that:
       - update_autoremove is defined
-      - update_autoremove | type_debug == "bool"
+      - update_autoremove is boolean
     quiet: yes
 
 - name: test if update_upgrade_command is set correctly
@@ -26,5 +26,5 @@
   assert:
     that:
       - update_reboot is defined
-      - update_reboot | type_debug == "bool"
+      - update_reboot is boolean
     quiet: yes
