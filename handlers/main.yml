@@ -1,5 +1,6 @@
 ---
 # handlers file for update
+
 - name: reboot
   reboot:
   when:
