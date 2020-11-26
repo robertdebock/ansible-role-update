@@ -1,4 +1,5 @@
 ---
+
 - name: test if update_autoremove is set correctly
   assert:
     that:
