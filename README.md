@@ -2,9 +2,9 @@
 
 Install updates on your system.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-update)|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![quality](https://img.shields.io/ansible/quality/22417)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/22417)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-update.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-update)|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-update/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-update)|[![quality](https://img.shields.io/ansible/quality/22417)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/22417)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -58,10 +58,11 @@ update_reboot: yes
 
 ## [Requirements](#requirements)
 
-- Access to a repository containing packages, likely on the internet.
-- A recent version of Ansible. (Tests run on the current, previous and next release of Ansible.)
+- pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-update/blob/master/requirements.txt).
 
 ## [Status of requirements](#status-of-requirements)
+
+The following roles are used to prepare a system. You may choose to prepare your system in another way, I have tested these roles as well.
 
 | Requirement | Travis | GitHub |
 |-------------|--------|--------|
