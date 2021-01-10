@@ -13,7 +13,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: graphviz
-        uses: robertdebock/github-graphviz-action@1.0.0
+        uses: robertdebock/github-graphviz-action@1.0.1
       - name: savepng
         uses: actions/upload-artifact@v2
         with:
