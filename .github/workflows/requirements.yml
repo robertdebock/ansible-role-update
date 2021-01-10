@@ -1,0 +1,19 @@
+---
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+      - name: graphviz
+        uses: robertdebock/graphviz-action@1.0.0
+      - name: savepng
+      - uses: actions/upload-artifact@v2
+        with:
+          name: requirements
+          path: requirements.*
