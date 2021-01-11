@@ -15,11 +15,13 @@ jobs:
       - name: requirements2png
         uses: robertdebock/graphviz-action@1.0.5
       - run: ls -l
+      - run: ls -l robertdebock
+      - run: ls -l "${GITHUB_REPOSITORY}"
       - run: pwd
       - name: savepng
         uses: actions/upload-artifact@v2
         with:
           name: dotandpng
           path: |
-            ${{ github.workspace }}/requirements.dot
-            ${{ github.workspace }}/requirements.png
+            ${{ github.repository }}/requirements.dot
+            ${{ github.repository }}/requirements.png
