@@ -17,7 +17,8 @@ jobs:
       - name: savepng
         uses: actions/upload-artifact@v2
         with:
-          name: requirements
+          name: dotandpng
           path: |
-            /requirements.*
-            !/requirements.yml
+            ${{ github.workspace }}/requirements.*
+            !${{ github.workspace }}/requirements.yml
+            !${{ github.workspace }}/requirements.txt
