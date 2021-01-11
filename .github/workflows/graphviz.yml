@@ -13,12 +13,11 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: requirements2png
-        uses: robertdebock/graphviz-action@1.0.4
+        uses: robertdebock/graphviz-action@1.0.5
       - name: savepng
         uses: actions/upload-artifact@v2
         with:
           name: dotandpng
           path: |
-            ${{ github.workspace }}/requirements.*
-            !${{ github.workspace }}/requirements.yml
-            !${{ github.workspace }}/requirements.txt
+            ${{ github.workspace }}/requirements.dot
+            ${{ github.workspace }}/requirements.png
