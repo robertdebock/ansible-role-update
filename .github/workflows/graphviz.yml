@@ -21,6 +21,7 @@ jobs:
           cd ${{ github.repository }}
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git add requirements.dot requirements.png
           git commit -m "Add generated files" -a
       - name: save png
         uses: ad-m/github-push-action@master
