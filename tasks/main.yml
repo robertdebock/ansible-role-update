@@ -43,7 +43,7 @@
     - ansible_pkg_mgr == "apt"
 
 - name: update all software (dnf)
-  dnf:
+  ansible.builtin.dnf:
     name: "*"
     state: latest
   notify:
@@ -54,7 +54,7 @@
     - skip_ansible_lint
 
 - name: update all software (pacman)
-  pacman:
+  community.general.pacman:
     update_cache: yes
     upgrade: yes
   notify:
@@ -97,7 +97,7 @@
     - ansible_pkg_mgr == "yum"
 
 - name: update all software (zypper)
-  zypper:
+  community.general.zypper:
     name: "*"
     state: latest
   notify:
