@@ -9,12 +9,12 @@
 - name: configure apk
   block:
     - name: update cache (apk)
-      apk:
+      community.general.apk:
         update_cache: yes
       changed_when: no
 
     - name: update all software (apk)
-      apk:
+      community.general.apk:
         upgrade: yes
       notify:
         - reboot
@@ -24,7 +24,7 @@
 - name: configure apt
   block:
     - name: update all software (apt)
-      apt:
+      ansible.builtin.apt:
         update_cache: yes
         upgrade: "{{ update_upgrade_command }}"
         cache_valid_time: "{{ update_cache_valid_time }}"
@@ -32,7 +32,7 @@
         - reboot
 
     - name: apt autoremove (apt)
-      apt:
+      ansible.builtin.apt:
         autoremove: "{{ update_autoremove }}"
       when:
         - ansible_pkg_mgr == "apt"
@@ -67,7 +67,7 @@
 - name: configure yum
   block:
     - name: update all software (yum/6)
-      yum:
+      ansible.builtin.yum:
         name: "*"
         state: latest
       notify:
@@ -80,7 +80,7 @@
     - name: configure 7
       block:
         - name: update all software (yum/7)
-          yum:
+          ansible.builtin.yum:
             name: "*"
             state: latest
           notify:
@@ -89,7 +89,7 @@
             - skip_ansible_lint
 
         - name: install yum-utils
-          package:
+          ansible.builtin.package:
             name: yum-utils
       when:
         - ansible_distribution_major_version == "7"
