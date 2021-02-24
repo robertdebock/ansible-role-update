@@ -4,7 +4,7 @@ Install updates on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-update/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-update)|[![quality](https://img.shields.io/ansible/quality/22417)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/22417)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
+|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-update/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-update)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/robertdebock/update)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -114,6 +114,7 @@ Apache-2.0
 
 I'd like to thank everybody that made contributions to this repository. It motivates me, improves the code and is just fun to collaborate.
 
+- [ahnooie](https://github.com/ahnooie)
 
 ## [Author Information](#author-information)
 
