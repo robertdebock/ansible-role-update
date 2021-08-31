@@ -5,4 +5,4 @@
   ansible.builtin.reboot:
   when:
     - update_reboot | bool
-    - ansible_connection != "docker"
+    - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
