@@ -37,8 +37,6 @@
       when:
         - ansible_pkg_mgr == "apt"
         - update_autoremove == "yes"
-      tags:
-        - skip_ansible_lint
   when:
     - ansible_pkg_mgr == "apt"
 
@@ -50,8 +48,6 @@
     - reboot
   when:
     - ansible_pkg_mgr == "dnf"
-  tags:
-    - skip_ansible_lint
 
 - name: update all software (pacman)
   community.general.pacman:
@@ -61,8 +57,6 @@
     - reboot
   when:
     - ansible_pkg_mgr == "pacman"
-  tags:
-    - skip_ansible_lint
 
 - name: configure yum
   block:
@@ -74,8 +68,6 @@
         - reboot
       when:
         - ansible_distribution_major_version == "6"
-      tags:
-        - skip_ansible_lint
 
     - name: configure 7
       block:
@@ -85,8 +77,6 @@
             state: latest
           notify:
             - reboot
-          tags:
-            - skip_ansible_lint
 
         - name: install yum-utils
           ansible.builtin.package:
@@ -104,5 +94,3 @@
     - reboot
   when:
     - ansible_pkg_mgr == "zypper"
-  tags:
-    - skip_ansible_lint
