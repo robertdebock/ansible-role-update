@@ -43,7 +43,7 @@
 - name: update all software (dnf)
   ansible.builtin.dnf:
     name: "*"
-    state: latest
+    state: latest  # noqa package-latest This role is to update packages.
   notify:
     - reboot
   when:
@@ -63,7 +63,7 @@
     - name: update all software (yum/6)
       ansible.builtin.yum:
         name: "*"
-        state: latest
+        state: latest  # noqa package-latest This role is to update packages.
       notify:
         - reboot
       when:
