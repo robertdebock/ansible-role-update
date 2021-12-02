@@ -3,3 +3,4 @@ roles:
   - name: robertdebock.bootstrap
 collections:
   - name: community.general
+    version: 0.1.1
