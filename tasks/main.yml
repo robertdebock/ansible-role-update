@@ -74,7 +74,7 @@
         - name: update all software (yum/7)
           ansible.builtin.yum:
             name: "*"
-            state: latest
+            state: latest  # noqa package-latest This role is to update packages.
           notify:
             - reboot
 
@@ -89,7 +89,7 @@
 - name: update all software (zypper)
   community.general.zypper:
     name: "*"
-    state: latest
+    state: latest  # noqa package-latest This role is to update packages.
   notify:
     - reboot
   when:
