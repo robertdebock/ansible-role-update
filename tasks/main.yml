@@ -71,7 +71,7 @@
 
     - name: configure 7
       block:
-        - name: update all software (yum/7)
+        - name: update all software (yum/7)  # noqa package-latest This role is to update packages.
           ansible.builtin.yum:
             name: "*"
             state: latest  # noqa package-latest This role is to update packages.
