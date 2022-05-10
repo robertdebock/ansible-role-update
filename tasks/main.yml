@@ -36,7 +36,7 @@
         autoremove: "{{ update_autoremove }}"
       when:
         - ansible_pkg_mgr == "apt"
-        - update_autoremove == "yes"
+        - update_autoremove | bool
   when:
     - ansible_pkg_mgr == "apt"
 
