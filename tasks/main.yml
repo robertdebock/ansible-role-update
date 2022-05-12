@@ -69,18 +69,18 @@
       when:
         - ansible_distribution_major_version == "6"
 
-    - name: configure 7
-      block:
-        - name: update all software (yum/7)
-          ansible.builtin.yum:
-            name: "*"
-            state: latest  # noqa package-latest This role is to update packages.
-          notify:
-            - reboot
+    - name: update all software (yum/7)
+      ansible.builtin.yum:
+        name: "*"
+        state: latest  # noqa package-latest This role is to update packages.
+      notify:
+        - reboot
+      when:
+        - ansible_distribution_major_version == "7"
 
-        - name: install yum-utils
-          ansible.builtin.package:
-            name: yum-utils
+    - name: install yum-utils
+      ansible.builtin.package:
+        name: yum-utils
       when:
         - ansible_distribution_major_version == "7"
   when:
