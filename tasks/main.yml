@@ -1,37 +1,37 @@
 ---
 # tasks file for update
 
-- name: import assert.yml
+- name: Import assert.yml
   ansible.builtin.import_tasks: assert.yml
   run_once: yes
   delegate_to: localhost
 
-- name: configure apk
+- name: Configure apk
   block:
-    - name: update cache (apk)
+    - name: Update cache (apk)
       community.general.apk:
         update_cache: yes
       changed_when: no
 
-    - name: update all software (apk)
+    - name: Update all software (apk)
       community.general.apk:
         upgrade: yes
       notify:
-        - reboot
+        - Reboot
   when:
     - ansible_pkg_mgr == "apk"
 
-- name: configure apt
+- name: Configure apt
   block:
-    - name: update all software (apt)
+    - name: Update all software (apt)
       ansible.builtin.apt:
         update_cache: yes
         upgrade: "{{ update_upgrade_command }}"
         cache_valid_time: "{{ update_cache_valid_time }}"
       notify:
-        - reboot
+        - Reboot
 
-    - name: apt autoremove (apt)
+    - name: Apt autoremove (apt)
       ansible.builtin.apt:
         autoremove: "{{ update_autoremove }}"
       when:
@@ -40,45 +40,45 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: update all software (dnf)
+- name: Update all software (dnf)
   ansible.builtin.dnf:
     name: "*"
     state: latest  # noqa package-latest This role is to update packages.
   notify:
-    - reboot
+    - Reboot
   when:
     - ansible_pkg_mgr == "dnf"
 
-- name: update all software (pacman)
+- name: Update all software (pacman)
   community.general.pacman:
     update_cache: yes
     upgrade: yes
   notify:
-    - reboot
+    - Reboot
   when:
     - ansible_pkg_mgr == "pacman"
 
-- name: configure yum
+- name: Configure yum
   block:
-    - name: update all software (yum/6)
+    - name: Update all software (yum/6)
       ansible.builtin.yum:
         name: "*"
         state: latest  # noqa package-latest This role is to update packages.
       notify:
-        - reboot
+        - Reboot
       when:
         - ansible_distribution_major_version == "6"
 
-    - name: update all software (yum/7)
+    - name: Update all software (yum/7)
       ansible.builtin.yum:
         name: "*"
         state: latest  # noqa package-latest This role is to update packages.
       notify:
-        - reboot
+        - Reboot
       when:
         - ansible_distribution_major_version == "7"
 
-    - name: install yum-utils
+    - name: Install yum-utils
       ansible.builtin.package:
         name: yum-utils
       when:
@@ -86,11 +86,11 @@
   when:
     - ansible_pkg_mgr == "yum"
 
-- name: update all software (zypper)
+- name: Update all software (zypper)
   community.general.zypper:
     name: "*"
     state: latest  # noqa package-latest This role is to update packages.
   notify:
-    - reboot
+    - Reboot
   when:
     - ansible_pkg_mgr == "zypper"
