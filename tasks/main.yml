@@ -7,6 +7,8 @@
   delegate_to: localhost
 
 - name: Configure apk
+  when:
+    - ansible_pkg_mgr == "apk"
   block:
     - name: Update cache (apk)
       community.general.apk:
@@ -18,10 +20,10 @@
         upgrade: yes
       notify:
         - Reboot
-  when:
-    - ansible_pkg_mgr == "apk"
 
 - name: Configure apt
+  when:
+    - ansible_pkg_mgr == "apt"
   block:
     - name: Update all software (apt)
       ansible.builtin.apt:
@@ -37,8 +39,6 @@
       when:
         - ansible_pkg_mgr == "apt"
         - update_autoremove
-  when:
-    - ansible_pkg_mgr == "apt"
 
 - name: Update all software (dnf)
   ansible.builtin.dnf:
@@ -59,6 +59,8 @@
     - ansible_pkg_mgr == "pacman"
 
 - name: Configure yum
+  when:
+    - ansible_pkg_mgr == "yum"
   block:
     - name: Update all software (yum/6)
       ansible.builtin.yum:
@@ -83,8 +85,6 @@
         name: yum-utils
       when:
         - ansible_distribution_major_version == "7"
-  when:
-    - ansible_pkg_mgr == "yum"
 
 - name: Update all software (zypper)
   community.general.zypper:
