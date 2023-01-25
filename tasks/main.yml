@@ -32,6 +32,8 @@
         cache_valid_time: "{{ update_cache_valid_time }}"
       notify:
         - Reboot
+      environment:
+        DEBIAN_FRONTEND: nointeractive
 
     - name: Apt autoremove (apt)
       ansible.builtin.apt:
@@ -39,6 +41,8 @@
       when:
         - ansible_pkg_mgr == "apt"
         - update_autoremove
+      environment:
+        DEBIAN_FRONTEND: nointeractive
 
 - name: Update all software (dnf)
   ansible.builtin.dnf:
