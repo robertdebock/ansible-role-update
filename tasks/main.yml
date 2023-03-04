@@ -30,8 +30,7 @@
         update_cache: yes
         upgrade: "{{ update_upgrade_command }}"
         cache_valid_time: "{{ update_cache_valid_time }}"
-      notify:
-        - Reboot
+
       environment:
         DEBIAN_FRONTEND: nointeractive
 
@@ -44,14 +43,35 @@
       environment:
         DEBIAN_FRONTEND: nointeractive
 
-- name: Update all software (dnf)
-  ansible.builtin.dnf:
-    name: "*"
-    state: latest  # noqa package-latest This role is to update packages.
-  notify:
-    - Reboot
+    - name: Check if reboot is required (apt)
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+      changed_when: no
+      notify:
+        - Reboot
+
+- name: Configure dnf
   when:
     - ansible_pkg_mgr == "dnf"
+  block:
+    - name: Update all software (dnf)
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest  # noqa package-latest This role is to update packages.
+
+    - name: Install dnf-utils
+      ansible.builtin.dnf:
+        name: dnf-utils
+
+    - name: Check if a reboot is required
+      ansible.builtin.command: needs-restarting -r
+      register: reboot_required
+      ignore_errors: yes
+      failed_when: false
+      changed_when: reboot_required.rc != 0
+      notify:
+        - Reboot
 
 - name: Update all software (pacman)
   community.general.pacman:
@@ -83,12 +103,19 @@
           ansible.builtin.yum:
             name: "*"
             state: latest  # noqa package-latest This role is to update packages.
-          notify:
-            - Reboot
 
         - name: Install yum-utils
           ansible.builtin.package:
             name: yum-utils
+
+        - name: Check if a reboot is required
+          ansible.builtin.command: needs-restarting -r
+          register: reboot_required
+          ignore_errors: yes
+          failed_when: false
+          changed_when: reboot_required.rc != 0
+          notify:
+            - Reboot
 
 - name: Update all software (zypper)
   community.general.zypper:
