@@ -29,3 +29,10 @@
       - update_reboot is defined
       - update_reboot is boolean
     quiet: yes
+
+- name: assert | Test if update_excluded_packages is set correctly
+  ansible.builtin.assert:
+    that:
+      - update_excluded_packages is defined
+      - update_excluded_packages is iterable
+    quiet: yes

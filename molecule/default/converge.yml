@@ -6,3 +6,5 @@
 
   roles:
     - role: ansible-role-update
+      update_excluded_packages:
+        - kernel

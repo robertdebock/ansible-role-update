@@ -25,6 +25,12 @@
   when:
     - ansible_pkg_mgr == "apt"
   block:
+    - name: Prevent upgrade for selected packages
+      ansible.builtin.dpkg_selections:
+        name: "{{ item }}"
+        selection: hold
+      loop: "{{ update_excluded_packages }}"
+
     - name: Update all software (apt)
       ansible.builtin.apt:
         update_cache: yes
@@ -48,6 +54,7 @@
   ansible.builtin.dnf:
     name: "*"
     state: latest  # noqa package-latest This role is to update packages.
+    exclude: "{{ update_excluded_packages }}"
   notify:
     - Reboot
   when:
@@ -70,6 +77,7 @@
       ansible.builtin.yum:
         name: "*"
         state: latest  # noqa package-latest This role is to update packages.
+        exclude: "{{ update_excluded_packages }}"
       notify:
         - Reboot
       when:
@@ -83,6 +91,7 @@
           ansible.builtin.yum:
             name: "*"
             state: latest  # noqa package-latest This role is to update packages.
+            exclude: "{{ update_excluded_packages }}"
           notify:
             - Reboot
 

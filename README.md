@@ -19,6 +19,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: robertdebock.update
+      update_excluded_packages:
+        - kernel
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-update/blob/master/molecule/default/prepare.yml):
@@ -57,6 +59,13 @@ update_cache_valid_time: 1
 # "yes": Always reboot when packages have changed.
 # "no": Never reboot when packages have changed.
 update_reboot: yes
+
+# You can exclude certain packages from being updated.
+# Some Ansible modules do not support this option, so this variable works for only:
+# - apt
+# - dnf
+# - yum
+update_excluded_packages: []
 ```
 
 ## [Requirements](#requirements)
