@@ -1,4 +1,4 @@
-# Ansible role [update](#update)
+# [Ansible role update](#update)
 
 Install updates on your system.
 
