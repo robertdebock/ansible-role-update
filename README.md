@@ -19,8 +19,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: robertdebock.update
-      update_excluded_packages:
-        - kernel
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-update/blob/master/molecule/default/prepare.yml):
@@ -65,6 +63,10 @@ update_reboot: yes
 # - apt
 # - dnf
 # - yum
+#
+# Example:
+# update_excluded_packages:
+#   - kernel
 update_excluded_packages: []
 ```
 

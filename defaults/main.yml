@@ -20,4 +20,8 @@ update_reboot: yes
 # - apt
 # - dnf
 # - yum
+#
+# Example:
+# update_excluded_packages:
+#   - kernel
 update_excluded_packages: []
