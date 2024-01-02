@@ -4,7 +4,7 @@ Install updates on your system.
 
 |GitHub|GitLab|Downloads|Version|
 |------|------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-update/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-update)|[![downloads](https://img.shields.io/ansible/role/d/24617)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
+|[![github](https://github.com/robertdebock/ansible-role-update/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-update/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-update/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-update)|[![downloads](https://img.shields.io/ansible/role/d/robertdebock/update)](https://galaxy.ansible.com/robertdebock/update)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-update.svg)](https://github.com/robertdebock/ansible-role-update/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
