@@ -14,8 +14,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: robertdebock.update
@@ -27,8 +27,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
@@ -45,7 +45,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for update
 
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
-update_autoremove: no
+update_autoremove: false
 
 # For APT (Debian/Ubuntu) only: apt_upgrade type which can be: dist, full, yes, or safe
 update_upgrade_command: dist
@@ -56,7 +56,7 @@ update_cache_valid_time: 1
 # When updating systems, a reboot may be required. Here you can select to:
 # "yes": Always reboot when packages have changed.
 # "no": Never reboot when packages have changed.
-update_reboot: yes
+update_reboot: true
 
 # You can exclude certain packages from being updated.
 # Some Ansible modules do not support this option, so this variable works for only:

@@ -2,7 +2,7 @@
 # defaults file for update
 
 # For APT (Debian/Ubuntu) only: remove unused dependency packages for all module states except `build-dep'
-update_autoremove: no
+update_autoremove: false
 
 # For APT (Debian/Ubuntu) only: apt_upgrade type which can be: dist, full, yes, or safe
 update_upgrade_command: dist
@@ -13,7 +13,7 @@ update_cache_valid_time: 1
 # When updating systems, a reboot may be required. Here you can select to:
 # "yes": Always reboot when packages have changed.
 # "no": Never reboot when packages have changed.
-update_reboot: yes
+update_reboot: true
 
 # You can exclude certain packages from being updated.
 # Some Ansible modules do not support this option, so this variable works for only:

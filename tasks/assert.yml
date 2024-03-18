@@ -5,7 +5,7 @@
     that:
       - update_autoremove is defined
       - update_autoremove is boolean
-    quiet: yes
+    quiet: true
 
 - name: assert | Test update_upgrade_command
   ansible.builtin.assert:
@@ -13,7 +13,7 @@
       - update_upgrade_command is defined
       - update_upgrade_command is string
       - update_upgrade_command in [ "dist", "full", "yes", "safe" ]
-    quiet: yes
+    quiet: true
 
 - name: assert | Test update_cache_valid_time
   ansible.builtin.assert:
@@ -21,18 +21,18 @@
       - update_cache_valid_time is defined
       - update_cache_valid_time is number
       - update_cache_valid_time >= 0
-    quiet: yes
+    quiet: true
 
 - name: assert | Test update_reboot
   ansible.builtin.assert:
     that:
       - update_reboot is defined
       - update_reboot is boolean
-    quiet: yes
+    quiet: true
 
 - name: assert | Test update_excluded_packages
   ansible.builtin.assert:
     that:
       - update_excluded_packages is defined
       - update_excluded_packages is iterable
-    quiet: yes
+    quiet: true

@@ -4,7 +4,7 @@
 - name: Import assert.yml
   ansible.builtin.import_tasks:
     file: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Configure apk
@@ -13,12 +13,12 @@
   block:
     - name: Update cache (apk)
       community.general.apk:
-        update_cache: yes
-      changed_when: no
+        update_cache: true
+      changed_when: false
 
     - name: Update all software (apk)
       community.general.apk:
-        upgrade: yes
+        upgrade: true
       notify:
         - Reboot
 
@@ -34,7 +34,7 @@
 
     - name: Update all software (apt)
       ansible.builtin.apt:
-        update_cache: yes
+        update_cache: true
         upgrade: "{{ update_upgrade_command }}"
         cache_valid_time: "{{ update_cache_valid_time }}"
       notify:
@@ -63,8 +63,8 @@
 
 - name: Update all software (pacman)
   community.general.pacman:
-    update_cache: yes
-    upgrade: yes
+    update_cache: true
+    upgrade: true
   notify:
     - Reboot
   when:
