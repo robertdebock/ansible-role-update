@@ -75,7 +75,7 @@
     - ansible_pkg_mgr == "yum"
   block:
     - name: Update all software (yum/6)
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
         name: "*"
         state: latest  # noqa package-latest This role is to update packages.
         exclude: "{{ update_excluded_packages }}"
@@ -89,7 +89,7 @@
         - ansible_distribution_major_version != "6"
       block:
         - name: Update all software (yum)
-          ansible.builtin.yum:
+          ansible.builtin.dnf:
             name: "*"
             state: latest  # noqa package-latest This role is to update packages.
             exclude: "{{ update_excluded_packages }}"
