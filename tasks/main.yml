@@ -9,7 +9,7 @@
 
 - name: Configure apk
   when:
-    - ansible_pkg_mgr == "apk"
+    - ansible_facts['pkg_mgr'] == "apk"
   block:
     - name: Update cache (apk)
       community.general.apk:
@@ -24,7 +24,7 @@
 
 - name: Configure apt
   when:
-    - ansible_pkg_mgr == "apt"
+    - ansible_facts['pkg_mgr'] == "apt"
   block:
     - name: Prevent upgrade for selected packages
       ansible.builtin.dpkg_selections:
@@ -46,7 +46,7 @@
       ansible.builtin.apt:
         autoremove: "{{ update_autoremove }}"
       when:
-        - ansible_pkg_mgr == "apt"
+        - ansible_facts['pkg_mgr'] == "apt"
         - update_autoremove
       environment:
         DEBIAN_FRONTEND: nointeractive
@@ -59,7 +59,7 @@
   notify:
     - Reboot
   when:
-    - ansible_pkg_mgr in [ "dnf", "dnf5" ]
+    - ansible_facts['pkg_mgr'] in [ "dnf", "dnf5" ]
 
 - name: Update all software (pacman)
   community.general.pacman:
@@ -68,11 +68,11 @@
   notify:
     - Reboot
   when:
-    - ansible_pkg_mgr == "pacman"
+    - ansible_facts['pkg_mgr'] == "pacman"
 
 - name: Configure yum
   when:
-    - ansible_pkg_mgr == "yum"
+    - ansible_facts['pkg_mgr'] == "yum"
   block:
     - name: Update all software (yum/6)
       ansible.builtin.dnf:
@@ -82,11 +82,11 @@
       notify:
         - Reboot
       when:
-        - ansible_distribution_major_version == "6"
+        - ansible_facts['distribution_major_version'] == "6"
 
     - name: Update yum non-6
       when:
-        - ansible_distribution_major_version != "6"
+        - ansible_facts['distribution_major_version'] != "6"
       block:
         - name: Update all software (yum)
           ansible.builtin.dnf:
@@ -107,4 +107,4 @@
   notify:
     - Reboot
   when:
-    - ansible_pkg_mgr == "zypper"
+    - ansible_facts['pkg_mgr'] == "zypper"
