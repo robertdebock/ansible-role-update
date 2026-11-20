@@ -14,7 +14,8 @@
     - name: Update cache (apk)
       community.general.apk:
         update_cache: true
-      changed_when: false
+      changed_when:
+        - false
 
     - name: Update all software (apk)
       community.general.apk:
